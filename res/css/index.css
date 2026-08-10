@@ -44,7 +44,6 @@ body {
   color: #007cff;
 }
 
-/* Keeps layout text styled and safe from overflowing bounds */
 #statuscafe-content {
     font-style: italic;
     word-break: break-word;

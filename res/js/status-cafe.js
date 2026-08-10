@@ -1,5 +1,6 @@
 // https://status.cafe/current-status.js?name=aezi
 // .status.json
+// double check
 
 fetch("./status.json")
     .then(r => r.json())
