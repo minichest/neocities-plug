@@ -5,6 +5,9 @@
 @import url('https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css');
 
 /* --- Defaults --- */
+
+html, body { height: 100vh; }
+
 body {
   margin: 0 auto;
   background-color: var(--color-ice-blue);

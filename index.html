@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="min-height: 100%;">
+<html lang="en" style="height: 100%;">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +8,38 @@
     <link rel="stylesheet" href="https://jsdelivr.net">
     <link href="/res/css/index.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  <body style="min-height: 100vh; display: flex; flex-direction: column; margin: 0;">
+  
+  <body class="is-flex is-flex-direction-column" style="min-height: 100%; margin: 0;">
 
-    <main class="section py-5" style="flex: 1 0 auto;">
+    <!-- Main acts as the flexible container filling up the extra space -->
+    <!-- COMPACTED: Changed padding-top/bottom from py-5 to py-4 to save vertical screen space -->
+    <main class="section py-4 c4n is-flex-grow-1 is-flex-shrink-0">
       <div class="container">
-        <!-- FIXED: Removed .is-desktop so columns smoothly split on tablet and stack on mobile devices -->
-        <div class="columns is-variable is-4-tablet is-5-desktop">
-          <!-- LEFT SIDEBAR PANEL (Sonic image + small biography + live widget) -->
+        
+        <!-- COMPACTED: Lowered variable gap spacing from is-5 to is-4 -->
+        <div class="columns is-variable is-4-tablet is-4-desktop">
+          
+          <!-- LEFT SIDEBAR PANEL -->
           <div class="column is-12-mobile is-4-tablet is-4-desktop">
-              <!-- FIXED: Centers your pixel artwork block fluidly on all display scales -->
-              <div class="profile-pic mb-4 has-text-centered-mobile">
-                <img src="/res/img/sonic-pixelated-2.png" alt="aezi graphic" style="max-width: 100%; height: auto;">
+              <!-- COMPACTED: Max-height limit added to graphic to maintain a low profile -->
+              <div class="profile-pic mb-3 has-text-centered-mobile">
+                <img src="/res/img/sonic-pixelated-2.png" alt="aezi graphic" style="max-width: 100%; max-height: 150px; width: auto; height: auto; object-fit: contain;">
               </div>
 
-              <div class="p-4 mb-4 mini-bio" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+              <!-- COMPACTED: Changed margins from mb-4 to mb-3 -->
+              <div class="p-4 mb-3 mini-bio" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15); font-size: 0.95rem;">
                 <p class="mb-2 focus-in-contract"><strong>where i'm at: </strong>UK</p>
                 <p class="mb-2 focus-in-contract"><strong>mood:</strong> building things</p>
                 <p class="mb-0 focus-in-contract"><strong>interests:</strong> modern web design, experiments, listening to music</p>
               </div>
 
-              <div class="p-4 mb-4 status-card" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+              <div class="p-4 mb-0 status-card" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
                 <div class="statuscafe-card">
-                    <!-- FIXED: Using Bulma's native title hierarchy class to scale typography fluidly -->
-                    <h2 class="title is-4 mb-3 statuscafe-title">status</h2>
+                    <!-- COMPACTED: Title element reduced to is-5 -->
+                    <h2 class="title is-5 mb-2 statuscafe-title">status</h2>
                     
                     <div id="statuscafe">
-                        <div id="statuscafe-username" class="is-size-6 mb-2"></div>
+                        <div id="statuscafe-username" class="is-size-6 mb-1"></div>
                         <div id="statuscafe-content" class="is-size-6"></div>
                     </div>
                     
@@ -42,41 +48,44 @@
               </div>
           </div>
           
-          <!-- RIGHT MAIN PANELS (Welcome text + About details + Blockquote panel) -->
+          <!-- RIGHT MAIN PANELS -->
           <div class="column is-12-mobile is-8-tablet is-8-desktop">
               
-              <div class="p-5 mb-4" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
-                <!-- FIXED: Made title fluid using responsive font sizes -->
-                <h1 class="title is-2-desktop is-3-tablet is-4-mobile mb-3" style="border-bottom: 3px solid var(--color-dark-blue); padding-bottom: 8px;">hello, i'm aezi or edi.</h1>
-                <p>Welcome to my page!</p>
+              <!-- COMPACTED: Reduced padding layout sizes from p-5 to p-4, margins to mb-3 -->
+              <div class="p-4 mb-3" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <!-- COMPACTED: Downsized title classes across all device layers -->
+                <h1 class="title is-3-desktop is-4-tablet is-5-mobile mb-2" style="border-bottom: 3px solid var(--color-dark-blue); padding-bottom: 6px;">hello, i'm aezi or edi.</h1>
+                <p class="is-size-6">Welcome to my page!</p>
               </div>
               
-              <div class="p-5 mb-4" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
-                <h2 class="title is-4 mb-3">About Me</h2>
-                <p style="line-height: 1.6;">I am edi or aezi. I'm a major sonic fan since I was little who has been also into football for over 16 years. I'm currently doing computer science at university. I'm also a music fan so feel free to recommend me stuff.</p>
+              <div class="p-4 mb-3" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <!-- COMPACTED: Reduced layout titles to is-5 -->
+                <h2 class="title is-5 mb-2">About Me</h2>
+                <p class="is-size-6" style="line-height: 1.5;">I am edi or aezi. I'm a major sonic fan since I was little who has been also into football for over 16 years. I'm currently doing computer science at university. I'm also a music fan so feel free to recommend me stuff.</p>
               </div>
             
-              <div class="p-5 mb-3" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
-                <h2 class="title is-4 mb-3">quote to live for</h2>
+              <div class="p-4 mb-0" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <h2 class="title is-5 mb-2">quote to live for</h2>
                 
-                <!-- FIXED: Styled using native Bulma message structure style framework blocks -->
-                <div class="notification is-link is-light my-3 py-3" style="border-left: 4px solid var(--color-true-blue); border-radius: 0;">
+                <!-- COMPACTED: Trimmed margins and padded spacing internal frames -->
+                <div class="notification is-link is-light my-2 py-2 px-3" style="border-left: 4px solid var(--color-true-blue); border-radius: 0;">
                   <p class="is-size-6" style="font-style: italic;">
                     “When you are content to be simply yourself and don't compare or compete, everyone will respect you.” 
                   </p>
                 </div>
                 
-                <p class="mt-4 mb-0">Feel free to look around at <a href="/angel-island">Angel Island</a> or <a href="https://twitter.com/rlfabutin" target="_blank" class="has-text-link">connect with me</a>!</p>
+                <p class="mt-3 mb-0 is-size-6">Feel free to look around at <a href="/angel-island">Angel Island</a> or <a href="https://twitter.com" target="_blank" class="has-text-link">connect with me</a>!</p>
               </div>
           </div>
         </div>
       </div>
     </main>
 
-    <footer class="footer py-4" style="flex-shrink: 0; background-color: transparent; margin-top: auto;">
+    <!-- COMPACTED: Trimmed py-4 footer down to py-3 -->
+    <footer class="footer py-3 mt-auto is-flex-shrink-0" style="background-color: transparent;">
       <div class="container">
         <div class="has-text-centered">
-          <p>© 2026 aezi. built on <a href="https://neocities.org" class="has-text-link">neocities</a> and <a href="https://github.com" class="has-text-link">GitHub</a>.</p>
+          <p class="is-size-7">© 2026 aezi. built on <a href="https://neocities.org" class="has-text-link">neocities</a> and <a href="https://github.com" class="has-text-link">GitHub</a>.</p>
         </div>
       </div>
     </footer>
