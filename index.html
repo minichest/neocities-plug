@@ -29,22 +29,19 @@
               </div>
 
               <div class="p-4 mb-4 status-card">
-                  <div class="statuscafe-card">
-                      <h2 class="statuscafe-title">status</h2>
-                      
-                      <!-- Bypasses the CSP script checks entirely by displaying the text view as an embedded object item -->
-                      <object 
-                          type="text/html" 
-                          data="https://status.cafe" 
-                          style="width: 100%; height: 80px; border: none; overflow: hidden; background: transparent;"
-                          scrolling="no">
-                      </object>
-              
-                  </div>
+                <div class="statuscafe-card">
+                    <h2 class="statuscafe-title">status</h2>
+                    
+                    <!-- The target containers where your JavaScript drops your live data -->
+                    <div id="statuscafe">
+                        <div id="statuscafe-username"></div>
+                        <div id="statuscafe-content"></div>
+                    </div>
+                    
+                    <!-- Calls your JavaScript script panel seamlessly -->
+                    <script src="/res/js/status-cafe.js" defer></script>
+                </div>
               </div>
-
-
-
             </div>
           </div>
           
