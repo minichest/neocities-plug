@@ -31,7 +31,7 @@ body {
 
 #statuscafe {
     padding: .5em;
-    background-color: azure;
+    background-color: white;
     border: 1px solid midnightblue;
 }
 
@@ -40,11 +40,16 @@ body {
 }
 
 #statuscafe-content {
-    margin: 0 1em 0.5em 1em;
+  margin: 0 1em 0.5em 1em;
+  color: #007cff;
 }
 
 /* Keeps layout text styled and safe from overflowing bounds */
 #statuscafe-content {
     font-style: italic;
     word-break: break-word;
+}
+
+.status-date {
+  color: #366c6c !important;
 }

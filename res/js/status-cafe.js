@@ -15,7 +15,7 @@ fetch("./status.json")
         }
 
         // Injects text with Bulma inline helpers (has-text-link keeps your username colored blue)
-        usernameEl.innerHTML = '<a href="https://status.cafe/users/aezi" target="_blank" class="has-text-link has-text-weight-bold">' + r.author + '</a> ' + r.face + ' <span class="has-text-grey-light is-size-7 ml-1">' + r.timeAgo + '</span>';
+        usernameEl.innerHTML = '<a href="https://status.cafe/users/aezi" target="_blank" class="has-text-link has-text-weight-bold">' + r.author + '</a> ' + r.face + ' <span class="status-date is-size-7 ml-1">' + r.timeAgo + '</span>';
         contentEl.innerHTML = r.content;
     })
     .catch(err => {
