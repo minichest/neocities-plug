@@ -4,8 +4,8 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 * * * *'  # Runs automatically in the background every single hour
-  workflow_dispatch:      # Gives you a button on GitHub to manually sync with 1 click
+    - cron: '0 * * * *'  # Automatically fetches your latest status in the background every single hour
+  workflow_dispatch:      # Adds a button on GitHub to manually sync with 1 click
 
 jobs:
   build:
@@ -14,11 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # FETCH STEP: Downloads your live data into your workspace BEFORE compilation runs
+      # STEP 1: Downloads your live data cleanly straight into your main root folder
       - name: Fetch Live Data from Status Cafe
         run: |
           curl -s "https://status.cafe/users/aezi/status.json" -o "status.json"
 
+      # STEP 2: Primary Neocities deployment sync (Now targets your root directory)
       - if: ${{ success() && github.ref == 'refs/heads/main' }}
         id: deploy
         continue-on-error: true
@@ -26,12 +27,13 @@ jobs:
         with:
           api_token: ${{ secrets.NEOCITIES_API_KEY }}
           dist_dir: .
-          cleanup: true
+          cleanup: false
 
+      # STEP 3: Fallback deployment engine targeting the root directory in case the primary fails
       - name: Deploy to Neocities fallback
         if: ${{ steps.deploy.outcome == 'failure' && github.ref == 'refs/heads/main' }}
         uses: jonchang/deploy-neocities@master
         with:
           key: ${{ secrets.NEOCITIES_API_KEY }}
-          dir: _site
-          clean: true
+          dir: .
+          clean: false
