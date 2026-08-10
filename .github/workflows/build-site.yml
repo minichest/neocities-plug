@@ -19,15 +19,13 @@ jobs:
         run: |
           curl -s "https://status.cafe/users/aezi/status.json" -o "status.json"
 
-      - run: make
-
       - if: ${{ success() && github.ref == 'refs/heads/main' }}
         id: deploy
         continue-on-error: true
         uses: bcomnes/deploy-to-neocities@v1
         with:
           api_token: ${{ secrets.NEOCITIES_API_KEY }}
-          dist_dir: _site
+          dist_dir: .
           cleanup: true
 
       - name: Deploy to Neocities fallback
