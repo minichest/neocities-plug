@@ -1,0 +1,19 @@
+@import url('https://googleapis.com');
+
+:root {
+  --font-headings: 'Space Grotesk', sans-serif;
+  --font-body:     'Albert Sans', sans-serif;
+  --font-code:     'Comic Mono', monospace;
+}
+
+body, .content {
+  font-family: var(--font-body);
+}
+
+.title, .subtitle, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings) !important;
+}
+
+code, pre, kbd {
+  font-family: var(--font-code) !important;
+}

@@ -1,0 +1,39 @@
+name: Build site
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 * * * *'  # Runs automatically in the background every single hour
+  workflow_dispatch:      # Gives you a button on GitHub to manually sync with 1 click
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # FETCH STEP: Downloads your live data into your workspace BEFORE compilation runs
+      - name: Fetch Live Data from Status Cafe
+        run: |
+          curl -s "https://status.cafe/users/aezi/status.json" -o "status.json"
+
+      - run: make
+
+      - if: ${{ success() && github.ref == 'refs/heads/main' }}
+        id: deploy
+        continue-on-error: true
+        uses: bcomnes/deploy-to-neocities@v1
+        with:
+          api_token: ${{ secrets.NEOCITIES_API_KEY }}
+          dist_dir: _site
+          cleanup: true
+
+      - name: Deploy to Neocities fallback
+        if: ${{ steps.deploy.outcome == 'failure' && github.ref == 'refs/heads/main' }}
+        uses: jonchang/deploy-neocities@master
+        with:
+          key: ${{ secrets.NEOCITIES_API_KEY }}
+          dir: _site
+          clean: true

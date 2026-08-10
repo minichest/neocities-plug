@@ -1,0 +1,53 @@
+@import url('/res/css/colours.css');
+@import url('https://googleapis.com');
+
+.custom-404-bg {
+  background-color: var(--color-ice-blue);
+  background-image: linear-gradient(
+      color-mix(in srgb, var(--color-ice-blue) 2%, #000000), 
+      color-mix(in srgb, var(--color-ice-blue) 2%, #000000)
+    ), 
+    url('/res/img/scenes/green-hill-zone.png'); 
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: overlay; 
+}
+
+.error-title {
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 5rem;
+  color: #ff3860;
+  text-shadow: 4px 4px 0px #000000;
+  line-height: 1;
+}
+
+.error-subtitle {
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 2.2rem;
+  color: #ffdd57;
+  text-shadow: 3px 3px 0px #000000;
+}
+
+.error-text {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 1.2rem;
+  color: #363636;
+}
+
+.custom-retro-btn {
+  font-family: 'Silkscreen', sans-serif !important;
+  background-color: var(--color-true-blue) !important;
+  color: #ffffff !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0px !important;
+}
+
+.custom-retro-btn:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}

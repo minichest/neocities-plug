@@ -1,0 +1,132 @@
+:root {
+    --color-true-green: #248a3d;
+    --color-dark-green: #165c26;
+}
+
+.guestbook-page-body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: sans-serif;
+    background-color: #f2faf4;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.guestbook-main-container {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.guestbook-header-section {
+    background-color: #ffffff;
+    border: 2px solid var(--color-true-green);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.main-page-title {
+    color: var(--color-dark-green);
+    border-bottom: 3px solid var(--color-dark-green);
+    padding-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+.subtitle-text {
+    font-style: italic;
+    color: #555555;
+    margin: 0;
+}
+
+.guestbook-columns-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.guestbook-column-card {
+    flex: 1;
+    min-width: 0;
+    background-color: #ffffff;
+    border: 2px solid var(--color-true-green);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.section-column-title {
+    color: var(--color-true-green);
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.iframe-wrap {
+    overflow: hidden;
+    background: transparent;
+}
+
+.guestbook-footer-section {
+    background-color: #ffffff;
+    border: 2px solid var(--color-true-green);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px;
+    display: inline-block;
+}
+
+.back-home-link {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--color-true-green);
+}
+
+.back-home-link:hover {
+    text-decoration: underline;
+    color: var(--color-dark-green);
+}
+
+@media (max-width: 768px) {
+    .guestbook-columns-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .guestbook-column-card {
+        width: 100%;
+    }
+}
+
+/* LEFT CONTAINER: Drop a Ring */
+#cbox-form-wrap {
+    height: 300px; 
+    overflow: hidden;
+    position: relative;
+}
+
+#cbox-form-wrap iframe {
+    position: absolute;
+    top: -260px; 
+    left: 0;
+}
+
+/* RIGHT CONTAINER: Chaos Emeralds */
+#cbox-messages-wrap {
+    height: 330px; 
+    overflow: hidden;
+    position: relative;
+}
+
+#cbox-messages-wrap iframe {
+    position: absolute;
+    top: -55px; 
+    left: 0;
+}

@@ -1,0 +1,199 @@
+@import url('https://rifabutin.neocities.org/res/css/colours.css');
+@import url('https://googleapis.com');
+
+body.music-page {
+  margin: 0 auto;
+  background-color: var(--color-ice-blue);
+  background-image: linear-gradient(
+      color-mix(in srgb, var(--color-ice-blue) 2%, #000000), 
+      color-mix(in srgb, var(--color-ice-blue) 2%, #000000)
+    ), 
+    url('https://rifabutin.neocities.org/res/img/lofi-pixel-room.png'); 
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: overlay; 
+  min-height: 100vh;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1024px) {
+  body.music-page {
+    overflow-y: auto;
+  }
+}
+
+.custom-panel-box {
+  background-color: #ffffff !important;
+  border: 2px solid var(--color-true-blue);
+  border-radius: 4px;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  color: #363636;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.column.is-8 .custom-panel-box {
+  padding: 0.8rem 1.1rem !important;
+  margin-bottom: 0.8rem;
+}
+
+.column.is-8 .text-pixel-heading {
+  font-size: 1.45rem;
+  margin-bottom: 0.35rem !important;
+}
+
+.column.is-8 p.mb-4 {
+  margin-bottom: 0.4rem !important;
+  font-size: 0.9rem;
+}
+
+.text-pixel-heading {
+  font-family: 'Silkscreen', sans-serif !important;
+  color: var(--color-true-blue) !important;
+  text-transform: lowercase;
+}
+
+.custom-retro-btn {
+  font-family: 'Silkscreen', sans-serif !important;
+  background-color: var(--color-true-blue) !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0px !important;
+}
+
+.custom-retro-btn:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+#last-fm-recent img, 
+#last-fm-top-tracks img, 
+#last-fm-artists img,
+#lastFmTracks img,
+#lastFmTopAlbums img,
+#lastFmTopArtistsGrid img,
+.track img {
+  object-fit: cover !important;
+  border-radius: 4px;
+  border: 1px solid var(--color-true-blue);
+  flex-shrink: 0 !important;
+  display: block !important;
+}
+
+#last-fm-recent > div, 
+#last-fm-top-tracks > div, 
+#last-fm-artists > div,
+#lastFmTracks > div,
+#lastFmTopAlbums > div,
+#lastFmTopArtistsGrid > div,
+.track {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 6px 0;
+  border-bottom: 1px dashed #eee;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  color: #4a4a4a;
+  text-align: left;
+}
+
+#last-fm-top-tracks {
+  padding: 0.2rem 0.5rem;
+}
+
+#last-fm-top-tracks > .track {
+  gap: 8px !important;
+  padding: 4px 0;
+}
+
+#last-fm-top-tracks .track strong {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+#last-fm-top-tracks .track {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+#last-fm-top-tracks .timestamp {
+  font-size: 0.75rem;
+}
+
+#last-fm-artists {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+
+#last-fm-artists > .friend-box {
+  display: block !important;
+  padding: 0 !important;
+  border-bottom: none !important;
+}
+
+#last-fm-artists > .friend-box > a {
+  display: block;
+}
+
+#last-fm-artists .friend-box div[style*="aspectRatio"] {
+  margin-bottom: 0.15rem !important;
+}
+
+#last-fm-artists .friend-box div[style*="aspectRatio"] img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+#last-fm-recent > div > div,
+#last-fm-top-tracks > div > div,
+#last-fm-artists > div > div,
+.track > div {
+  flex: 1 !important;
+  display: block !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.timestamp, 
+#last-fm-recent span, 
+#last-fm-top-tracks span, 
+#last-fm-artists span,
+.track span {
+  font-size: 0.78rem;
+  color: #666;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+#last-fm-artists .friend-box p {
+  margin: 0.1rem 0 0;
+}
+
+#last-fm-artists .friend-box strong {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  #last-fm-artists {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  #last-fm-artists {
+    grid-template-columns: 1fr;
+  }
+}

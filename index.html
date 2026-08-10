@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" style="min-height: 100%;">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' data: blob: https://status.cafe;">
+    <title>aezi</title>
+    <link rel="stylesheet" href="https://jsdelivr.net">
+    <link href="/res/css/index.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body style="min-height: 100vh; display: flex; flex-direction: column; margin: 0;">
+
+    <main class="section py-5" style="flex: 1 0 auto;">
+      <div class="container">
+        
+        <div class="columns is-desktop">
+          
+          <div class="column is-4">
+            <div class="content">
+              
+              <div class="profile-pic mb-4">
+                <img src="/res/img/sonic-pixelated-2.png" alt="aezi graphic">
+              </div>
+
+              <div class="p-4 mb-4 mini-bio" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <p class="mb-2 focus-in-contract"><strong>where i'm at: </strong>UK</p>
+                <p class="mb-2 focus-in-contract"><strong>mood:</strong> building things</p>
+                <p class="mb-0 focus-in-contract"><strong>interests:</strong> modern web design, experiments, listening to music</p>
+              </div>
+
+              <div class="p-4 mb-4 status-card">
+                  <div class="statuscafe-card">
+                      <h2 class="statuscafe-title">status</h2>
+                      
+                      <!-- Bypasses the CSP script checks entirely by displaying the text view as an embedded object item -->
+                      <object 
+                          type="text/html" 
+                          data="https://status.cafe" 
+                          style="width: 100%; height: 80px; border: none; overflow: hidden; background: transparent;"
+                          scrolling="no">
+                      </object>
+              
+                  </div>
+              </div>
+
+
+
+            </div>
+          </div>
+          
+          <div class="column is-8">
+            <div class="content">
+              
+              <div class="p-5 mb-4" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <h1 class="title is-2 mb-3" style="border-bottom: 3px solid var(--color-dark-blue); padding-bottom: 8px;">hello, i'm aezi or edi.</h1>
+                <p>Welcome to my page!</p>
+              </div>
+              
+              <div class="p-5 mb-3" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <h2 class="title is-4 mt-2 mb-3">About Me</h2>
+                <p>I am edi or aezi. I'm a major sonic fan since I was little who has been also into football for over 16 years. I'm currently doing computer science at university. I'm also a music fan so feel free to recommend me stuff.</p>
+              </div>
+            
+              <div class="p-5 mb-3" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);">
+                <h2 class="title is-4 mt-2 mb-3">quote to live for</h2>
+                <blockquote class="my-4">
+                  “When you are content to be simply yourself and don't compare or compete, everyone will respect you.” 
+                </blockquote>
+                
+                <p class="mt-4 mb-0">Feel free to look around or <a href="https://twitter.com/rlfabutin" target="_blank">connect with me</a>!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer class="footer py-4" style="flex-shrink: 0;">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>© 2026 aezi. built on <a href="https://neocities.org">neocities</a>.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
