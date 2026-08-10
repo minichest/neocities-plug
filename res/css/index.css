@@ -34,9 +34,17 @@ body {
     background-color: azure;
     border: 1px solid midnightblue;
 }
+
 #statuscafe-username {
     margin-bottom: .5em;
 }
+
 #statuscafe-content {
     margin: 0 1em 0.5em 1em;
+}
+
+/* Keeps layout text styled and safe from overflowing bounds */
+#statuscafe-content {
+    font-style: italic;
+    word-break: break-word;
 }

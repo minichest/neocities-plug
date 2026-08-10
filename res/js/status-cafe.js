@@ -1,22 +1,24 @@
-// Fetches your live status data safely from your native host folder
+// https://status.cafe/current-status.js?name=aezi
+// .status.json
+
 fetch("./status.json")
     .then(r => r.json())
     .then(r => {
         const usernameEl = document.getElementById("statuscafe-username");
         const contentEl = document.getElementById("statuscafe-content");
 
-        if (!usernameEl || !contentEl) return; // Exit safely if elements aren't ready on screen
+        if (!usernameEl || !contentEl) return;
 
         if (!r.content || !r.content.length) {
             contentEl.innerHTML = "No status yet.";
             return;
         }
 
-        // Drops the variables directly into your hardcoded layout card boxes
-        usernameEl.innerHTML = '<a href="https://status.cafe/users/aezi" target="_blank">' + r.author + '</a> ' + r.face + ' ' + r.timeAgo;
+        // Injects text with Bulma inline helpers (has-text-link keeps your username colored blue)
+        usernameEl.innerHTML = '<a href="https://status.cafe/users/aezi" target="_blank" class="has-text-link has-text-weight-bold">' + r.author + '</a> ' + r.face + ' <span class="has-text-grey-light is-size-7 ml-1">' + r.timeAgo + '</span>';
         contentEl.innerHTML = r.content;
     })
     .catch(err => {
-        console.error("Error reading automated status.json file:", err);
+        console.error("Error reading status.json:", err);
         document.getElementById("statuscafe-content").innerHTML = "Status momentarily offline.";
     });
