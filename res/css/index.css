@@ -52,3 +52,13 @@ body {
 .status-date {
   color: #366c6c !important;
 }
+
+/* Text Context */
+
+strong {
+  color: var(--color-true-blue);
+}
+
+p {
+  color: rgba(10, 25, 49, 0.812);
+}
