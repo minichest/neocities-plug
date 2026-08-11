@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ice cap zone</title>
     <!-- Bulma Core CSS Framework -->
-    <link rel="stylesheet" href="https://jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <!-- Main Ice Cap Index Stylesheet Component -->
     <link href="/res/css/ice-cap-zone.css" rel="stylesheet" type="text/css" media="all">
   </head>
@@ -14,9 +14,11 @@
     <!-- RESTRUCTURED: Swapped dashboard layout for a dedicated Retro Hero Banner -->
     <section class="hero blog-hero mb-6">
       <div class="hero-body px-4">
-        <div class="container is-max-tablet">
+        <!-- ADDED: 'has-text-centered' to center all text inside this container -->
+        <div class="container is-max-tablet has-text-centered">
           
-          <div class="mb-4">
+          <!-- ADDED: 'is-flex is-justify-content-center' to center the button above the text -->
+          <div class="mb-4 is-flex is-justify-content-center">
             <a href="/" class="button is-small custom-retro-btn">← GO BACK</a>
           </div>
 
@@ -42,8 +44,8 @@
 
           <!-- Responsive Pagination Controls Grid Layer -->
           <nav class="pagination is-centered is-small mt-6" role="navigation" aria-label="pagination">
-            <a class="pagination-previous custom-nav-toggle" id="blog-prev-btn" disabled>previous</a>
-            <a class="pagination-next custom-nav-toggle" id="blog-next-btn" disabled>next page</a>
+            <a class="pagination-previous custom-nav-toggle" id="blog-prev-btn" disabled>prev</a>
+            <a class="pagination-next custom-nav-toggle" id="blog-next-btn" disabled>next</a>
             <ul class="pagination-list" id="blog-pagination-list">
               <!-- Dynamically populated page block buttons appear here -->
             </ul>

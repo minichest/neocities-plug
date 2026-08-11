@@ -1,155 +1,161 @@
-let currentBlogPage = 1;
-const entriesPerPage = 3; 
-let parsedBlogEntries = [];
+// /res/js/ice-cap-zone.js
+document.addEventListener("DOMContentLoaded", () => {
+  // Target configuration data streams
+  const FEED_URL = "/ice-cap-zone/feed.xml";
+  const POSTS_PER_PAGE = 5;
+  let currentActivePage = 1;
+  let parsedBlogPosts = [];
 
-async function initializeBlogFeed() {
-  const container = document.getElementById('xml-blog-feed');
-  const heroTitle = document.querySelector('.xml-fetched-title');
-  const heroSubtitle = document.querySelector('.xml-fetched-subtitle');
-  if (!container) return;
-  
-  try {
-    const response = await fetch('feed.xml');
-    if (!response.ok) throw new Error('Failed to resolve server feed path reference');
-    const textData = await response.text();
-    
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(textData, 'text/xml');
-    
-    // FIXED/ADDED: Scrapes official channel metadata directly out of your Atom head elements
-    const feedTitle = xmlDoc.querySelector('feed > title')?.textContent || 'ice cap zone';
-    const feedSubtitle = xmlDoc.querySelector('feed > subtitle')?.textContent || '';
-    
-    // Inject the XML details straight into your hero layout elements text strings
-    if (heroTitle) heroTitle.innerText = feedTitle.toLowerCase();
-    if (heroSubtitle) heroSubtitle.innerText = feedSubtitle.toLowerCase();
+  // DOM node connection points
+  const titleContainer = document.querySelector(".xml-fetched-title");
+  const subtitleContainer = document.querySelector(".xml-fetched-subtitle");
+  const feedStreamContainer = document.getElementById("xml-blog-feed");
+  const prevBtn = document.getElementById("blog-prev-btn");
+  const nextBtn = document.getElementById("blog-next-btn");
+  const paginationList = document.getElementById("blog-pagination-list");
 
-    const entries = xmlDoc.getElementsByTagName('entry');
-    parsedBlogEntries = []; 
-    
-    Array.from(entries).forEach(entry => {
-      const title = entry.getElementsByTagName('title')?.textContent || 'Untitled Log';
+  // Step 1: Query the Atom XML over the network
+  fetch(FEED_URL)
+    .then(response => {
+      if (!response.ok) throw new Error("Timeline timeline track broke down.");
+      return response.text();
+    })
+    .then(xmlString => {
+      // Step 2: Use native DOMParser to convert string data to an XML DOM structure
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+      // Extract general workspace stream variables
+      const feedTitle = xmlDoc.querySelector("feed > title")?.textContent || "ice cap zone";
+      const feedSubtitle = xmlDoc.querySelector("feed > subtitle")?.textContent || "logs timeline archive";
       
-      const linkTags = entry.getElementsByTagName('link');
-      let url = '#';
-      if (linkTags && linkTags.length > 0) {
-        url = linkTags[0].getAttribute('href') || '#';
-      }
-      
-      const dateRaw = entry.getElementsByTagName('updated')?.textContent || '';
-      const contentRaw = entry.getElementsByTagName('content')?.textContent || '';
-      
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = contentRaw;
-      const cleanTextContent = tempDiv.textContent || tempDiv.innerText || '';
-      const shortExcerpt = cleanTextContent.split(' ').slice(0, 22).join(' ') + '...';
-      
-      parsedBlogEntries.push({
-        title: title,
-        url: url,
-        date: dateRaw,
-        excerpt: shortExcerpt
+      // Update your centered hero tags instantly
+      titleContainer.textContent = feedTitle.toLowerCase();
+      subtitleContainer.textContent = feedSubtitle.toLowerCase();
+
+      // Step 3: Loop through individual entry tags
+      const entries = xmlDoc.querySelectorAll("entry");
+      entries.forEach(entry => {
+        const title = entry.querySelector("title")?.textContent || "untitled log";
+        const rawUrl = entry.querySelector("link")?.getAttribute("href") || "#";
+        const rawDate = entry.querySelector("updated")?.textContent || "";
+        
+        // Parse raw content block data nodes cleanly
+        const htmlContent = entry.querySelector("content")?.textContent || "...";
+
+        // Isolate post-name.html from the absolute URL if necessary
+        const fallbackSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        const cleanUrl = rawUrl !== "#" ? rawUrl : `/ice-cap-zone/${fallbackSlug}.html`;
+
+        // Format dates to look uniform
+        let formattedDate = "Unknown Date";
+        if (rawDate) {
+          const dateObj = new Date(rawDate);
+          formattedDate = dateObj.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          });
+        }
+
+        // Push data record directly to memory workspace arrays
+        parsedBlogPosts.push({
+          title: title.toLowerCase(),
+          url: cleanUrl,
+          date: formattedDate,
+          summary: htmlContent
+        });
       });
+
+      // Initialize render timeline grid arrays
+      renderTimelineView();
+    })
+    .catch(error => {
+      console.error(error);
+      feedStreamContainer.innerHTML = `<p class="has-text-danger font-pixel">ERR: timeline link sync failure</p>`;
     });
-    
-    renderPageSlice();
-    setupPaginationControls();
 
-  } catch (error) {
-    console.error('Error fetching file attributes stream:', error);
-    container.innerHTML = `<p class="is-size-7 has-text-danger font-pixel">Error 404: Subdirectory parsing link broken. Failed to compile Atom metadata loops.</p>`;
-    if (heroTitle) heroTitle.innerText = "timeline glitch";
-    if (heroSubtitle) heroSubtitle.innerText = "connection lost.";
-  }
-}
+  // Step 4: Pagination Slice Mapping Logic
+  function renderTimelineView() {
+    feedStreamContainer.innerHTML = "";
 
-function renderPageSlice() {
-  const container = document.getElementById('xml-blog-feed');
-  container.innerHTML = '';
-  
-  if (parsedBlogEntries.length === 0) {
-    container.innerHTML = `<p class="is-size-7 has-text-grey font-pixel">No active universe timelines detected in this feed layer.</p>`;
-    return;
-  }
-  
-  const startIdx = (currentBlogPage - 1) * entriesPerPage;
-  const endIdx = startIdx + entriesPerPage;
-  const pageItems = parsedBlogEntries.slice(startIdx, endIdx);
-  
-  pageItems.forEach(post => {
-    let formattedDate = 'Unknown Date';
-    if (post.date) {
-      formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'short', day: '2-digit', year: 'numeric'
-      });
+    if (parsedBlogPosts.length === 0) {
+      feedStreamContainer.innerHTML = `<p class="is-size-7 font-pixel has-text-grey">No historical logs parsed.</p>`;
+      return;
     }
-    
-    const article = document.createElement('article');
-    article.className = 'blog-summary-item';
-    article.innerHTML = `
-      <a href="${post.url}" class="blog-post-link">${post.title.toLowerCase()}</a>
-      <div class="blog-meta-text">
-        <span>Date: ${formattedDate}</span> &nbsp;|&nbsp; <span>Category: logs</span>
-      </div>
-      <p class="blog-excerpt">${post.excerpt}</p>
-    `;
-    container.appendChild(article);
-  });
-}
 
-function setupPaginationControls() {
-  const totalPages = Math.ceil(parsedBlogEntries.length / entriesPerPage);
-  const prevBtn = document.getElementById('blog-prev-btn');
-  const nextBtn = document.getElementById('blog-next-btn');
-  const listContainer = document.getElementById('blog-pagination-list');
-  
-  if (!listContainer) return;
-  listContainer.innerHTML = '';
-  
-  if (currentBlogPage === 1) {
-    prevBtn.setAttribute('disabled', 'true');
-  } else {
-    prevBtn.removeAttribute('disabled');
-  }
-  
-  if (currentBlogPage === totalPages || totalPages === 0) {
-    nextBtn.setAttribute('disabled', 'true');
-  } else {
-    nextBtn.removeAttribute('disabled');
-  }
-  
-  for (let i = 1; i <= totalPages; i++) {
-    const li = document.createElement('li');
-    const isCurrent = i === currentBlogPage ? 'is-current custom-page-current' : 'custom-page-btn';
-    
-    li.innerHTML = `<a class="pagination-link ${isCurrent}" aria-label="Goto page ${i}">${i}</a>`;
-    
-    li.querySelector('a').addEventListener('click', () => {
-      currentBlogPage = i;
-      renderPageSlice();
-      setupPaginationControls();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Slice records to isolate just the target index page segment
+    const startIdx = (currentActivePage - 1) * POSTS_PER_PAGE;
+    const endIdx = startIdx + POSTS_PER_PAGE;
+    const itemsToDisplay = parsedBlogPosts.slice(startIdx, endIdx);
+
+    // Loop data properties directly into clean Bulma layout rows
+    itemsToDisplay.forEach(post => {
+      const article = document.createElement("article");
+      article.className = "media p-4 my-3";
+      article.style.cssText = "border-left: 4px solid #00d1b2; background-color: #fafafa; border-radius: 4px;";
+      
+      article.innerHTML = `
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><a class="has-text-link is-size-5" href="${post.url}">${post.title}</a></strong>
+              <br>
+              <small class="has-text-grey">Date: ${post.date} | Category: logs</small>
+            </p>
+            <div class="is-size-6 mt-2">${post.summary}</div>
+          </div>
+        </div>
+      `;
+      feedStreamContainer.appendChild(article);
     });
+
+    updatePaginationControls();
+  }
+
+  // Step 5: Adjust Button Toggles on Change
+  function updatePaginationControls() {
+    const totalPages = Math.ceil(parsedBlogPosts.length / POSTS_PER_PAGE) || 1;
     
-    listContainer.appendChild(li);
-  }
-}
+    // Toggle active status configurations
+    prevBtn.disabled = currentActivePage === 1;
+    nextBtn.disabled = currentActivePage === totalPages;
 
-document.getElementById('blog-prev-btn').addEventListener('click', (e) => {
-  if (currentBlogPage > 1) {
-    currentBlogPage--;
-    renderPageSlice();
-    setupPaginationControls();
+    if (currentActivePage === 1) prevBtn.setAttribute("disabled", "true");
+    else prevBtn.removeAttribute("disabled");
+
+    if (currentActivePage === totalPages) nextBtn.setAttribute("disabled", "true");
+    else nextBtn.removeAttribute("disabled");
+
+    // Clear and draw page list items
+    paginationList.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.className = `pagination-link ${i === currentActivePage ? 'is-current' : ''}`;
+      a.textContent = i;
+      a.addEventListener("click", () => {
+        currentActivePage = i;
+        renderTimelineView();
+      });
+      li.appendChild(a);
+      paginationList.appendChild(li);
+    }
   }
+
+  // Navigation Click listeners
+  prevBtn.addEventListener("click", () => {
+    if (currentActivePage > 1) {
+      currentActivePage--;
+      renderTimelineView();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const totalPages = Math.ceil(parsedBlogPosts.length / POSTS_PER_PAGE);
+    if (currentActivePage < totalPages) {
+      currentActivePage++;
+      renderTimelineView();
+    }
+  });
 });
-
-document.getElementById('blog-next-btn').addEventListener('click', (e) => {
-  const totalPages = Math.ceil(parsedBlogEntries.length / entriesPerPage);
-  if (currentBlogPage < totalPages) {
-    currentBlogPage++;
-    renderPageSlice();
-    setupPaginationControls();
-  }
-});
-
-document.addEventListener('DOMContentLoaded', initializeBlogFeed);

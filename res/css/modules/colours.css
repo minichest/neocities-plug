@@ -22,6 +22,12 @@
   --badfuture-acid-pink: #e41858;
   --badfuture-toxic-green: #00ff66;
   --badfuture-sludge-black: #0c0204;
+
+  /* ice cap colours */
+  --icecap-deep-glacier: #041038;
+  --icecap-frost-blue: #2c64b0;
+  --icecap-neon-chill: #44ccff;
+  --icecap-snow-powder: #e0f8ff;
 }
 
 /* --- Defaults --- */
