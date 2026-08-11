@@ -104,3 +104,49 @@ body.guestbook-page-body {
 #guestbook {
     top: -50px;
 }
+
+#green-hill-header {
+  left: 140px;
+  position: relative;
+}
+
+/* Responsive container managing height dynamics */
+.atabook-frame-wrap {
+    width: 100%;
+    height: 650px; /* Perfect desktop height layout scale */
+    display: block;
+    background: #ffffff;
+}
+
+/* FLUID FIX: Drops the container height down on mobile devices so users don't have to scroll forever */
+@media screen and (max-width: 768px) {
+    .atabook-frame-wrap {
+        height: 520px;
+    }
+    
+    .top-nav-box {
+        position: static !important;
+        display: block;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #green-hill-header {
+        left: 0px;
+    }
+}
+
+@media screen and (min-height: 1279px) and (max-height: 1280px) {
+    #content-box {
+        top: 80px;
+        position: relative;
+    }
+}
+
+@media screen and (min-width: 845px) and (max-height: 1280px) {
+    #content-box {
+        top: 80px;
+        position: relative;
+    }
+}
