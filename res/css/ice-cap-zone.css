@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&display=swap');
+
+/* --- Background & Page Base --- */
+body.blog-page {
+  margin: 0 auto;
+  background-color: var(--icecap-deep-glacier);
+  /* Tint overlay protects text readability over the snowy patterns */
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--icecap-deep-glacier) 20%, transparent),
+    color-mix(in srgb, var(--icecap-deep-glacier) 50%, transparent)
+  ), 
+  url('../img/scenes/ice-cap-zone.png');
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-attachment: fixed;
+  image-rendering: pixelated;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* --- Blog List Container Cards --- */
+.blog-panel-box {
+  background-color: #ffffff !important;
+  border: 3px solid var(--icecap-frost-blue);
+  border-radius: 4px;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  color: #2b2b2b;
+  /* Flat shadow locks into the frozen deep blue grid canvas */
+  box-shadow: 8px 8px 0px var(--icecap-deep-glacier);
+  margin-bottom: 2rem;
+}
+
+/* --- Individual Article Preview Items --- */
+.blog-summary-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px dashed color-mix(in srgb, var(--icecap-frost-blue) 30%, #eee);
+}
+
+.blog-summary-item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.blog-summary-item:first-of-type {
+  padding-top: 0;
+}
+
+/* --- Hyperlink Interaction Loop --- */
+.blog-panel-box a {
+  color: var(--icecap-frost-blue) !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.1s ease-in-out;
+}
+
+.blog-panel-box a:visited {
+  color: var(--icecap-deep-glacier) !important; /* Visited post links turn dark glacier navy */
+}
+
+.blog-panel-box a:hover {
+  color: var(--icecap-neon-chill) !important; /* Hovering triggers a glowing neon chill burst */
+  text-decoration: underline dashed 2px;
+}
+
+.blog-panel-box a:active {
+  color: var(--icecap-snow-powder) !important; /* Clicking down flashes pale ice-white */
+}
+
+/* --- Typography Layout --- */
+.blog-main-title {
+  font-family: 'Silkscreen', sans-serif !important;
+  color: var(--icecap-deep-glacier) !important;
+  text-transform: lowercase;
+  letter-spacing: -1px;
+}
+
+.blog-post-link {
+  font-family: 'Pixelify Sans', sans-serif !important;
+  font-size: 1.35rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.blog-meta-text {
+  font-family: 'Pixelify Sans', sans-serif !important;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.blog-excerpt {
+  font-family: 'Pixelify Sans', sans-serif !important;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4a4a4a;
+  margin-top: 0.5rem;
+}
+
+/* --- Retro Navigation Action Buttons --- */
+.custom-retro-btn {
+  font-family: 'Silkscreen', sans-serif !important;
+  background-color: var(--icecap-deep-glacier) !important;
+  color: var(--icecap-snow-powder) !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0px !important;
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+.custom-retro-btn:hover {
+  background-color: var(--icecap-frost-blue) !important;
+  color: #ffffff !important;
+}
+
+.custom-retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* --- MOBILE & RESPONSIVE BREAKPOINTS --- */
+@media screen and (max-width: 1024px) {
+  .section {
+    padding: 1.5rem 1rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body.blog-page {
+    background-size: auto 100vh; /* Locks pixel landscape ratio securely on phones */
+  }
+  
+  .blog-panel-box {
+    padding: 1.25rem !important;
+    box-shadow: 4px 4px 0px var(--icecap-deep-glacier);
+    margin-bottom: 1.25rem;
+  }
+  
+  .blog-main-title {
+    font-size: 1.75rem !important;
+  }
+
+  .blog-post-link {
+    font-size: 1.15rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 0.92rem;
+  }
+}
+
+/* Final Part */
+
+/* --- Added Blog Hero Component Styles --- */
+.blog-hero {
+  background-color: rgba(4, 16, 56, 0.4); /* Translucent shield gives your art rich depth */
+  border-bottom: 3px solid var(--icecap-frost-blue);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.xml-fetched-subtitle {
+  color: var(--icecap-neon-chill) !important;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  margin-top: 0.25rem;
+}
+
+/* Clear padding overrides for fluid layout nesting */
+body.blog-page .section {
+  padding-top: 0 !important;
+}

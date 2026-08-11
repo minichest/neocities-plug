@@ -1,0 +1,51 @@
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before, 
+body::after {
+  content: "";
+  position: fixed;
+  top: -100px;
+  width: 32px;
+  height: 32px;
+  z-index: 1; 
+  pointer-events: none; 
+  opacity: 0.35;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+  background-image: url('/res/img/sonic-spinning-rings.gif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  animation: fallLinear 8s infinite linear;
+}
+
+body::before {
+  left: 10%;
+  animation-duration: 9s;
+  animation-delay: 0s;
+}
+
+body::after {
+  right: 12%;
+  animation-duration: 11s;
+  animation-delay: 3s;
+}
+
+@keyframes fallLinear {
+  0% {
+    top: -50px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.35;
+  }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    top: 105vh;
+    opacity: 0;
+  }
+}

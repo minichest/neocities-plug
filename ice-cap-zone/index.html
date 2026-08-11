@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ice cap zone</title>
+    <!-- Bulma Core CSS Framework -->
+    <link rel="stylesheet" href="https://jsdelivr.net">
+    <!-- Main Ice Cap Index Stylesheet Component -->
+    <link href="/res/css/ice-cap-zone.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body class="blog-page">
+
+    <!-- RESTRUCTURED: Swapped dashboard layout for a dedicated Retro Hero Banner -->
+    <section class="hero blog-hero mb-6">
+      <div class="hero-body px-4">
+        <div class="container is-max-tablet">
+          
+          <div class="mb-4">
+            <a href="/" class="button is-small custom-retro-btn">← GO BACK</a>
+          </div>
+
+          <!-- JavaScript dynamically populates these tags straight from your feed.xml data fields -->
+          <h1 class="title is-1 blog-main-title xml-fetched-title mb-2">loading...</h1>
+          <p class="subtitle is-5 font-pixel xml-fetched-subtitle">connecting timeline records...</p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Stream Container -->
+    <main class="section py-0">
+      <div class="container is-max-tablet">
+
+        <!-- Entry Feed Shell Card -->
+        <div class="p-5 p-6-tablet blog-panel-box">
+          
+          <!-- JavaScript intercepts this target to automatically inject your Atom posts -->
+          <div id="xml-blog-feed">
+            <p class="is-size-7 font-pixel has-text-grey">Connecting to Atom universe feed repository...</p>
+          </div>
+
+          <!-- Responsive Pagination Controls Grid Layer -->
+          <nav class="pagination is-centered is-small mt-6" role="navigation" aria-label="pagination">
+            <a class="pagination-previous custom-nav-toggle" id="blog-prev-btn" disabled>previous</a>
+            <a class="pagination-next custom-nav-toggle" id="blog-next-btn" disabled>next page</a>
+            <ul class="pagination-list" id="blog-pagination-list">
+              <!-- Dynamically populated page block buttons appear here -->
+            </ul>
+          </nav>
+
+        </div> <!-- End Blog Panel Box -->
+        
+      </div>
+    </main>
+
+    <!-- Connects your dynamic Atom extraction script asset -->
+    <script src="/res/js/ice-cap-zone.js"></script>
+  </body>
+</html>
