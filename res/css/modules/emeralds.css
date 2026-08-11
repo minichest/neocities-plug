@@ -1,0 +1,39 @@
+/* The spinning engine definition */
+@keyframes emeraldSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Optional: Authentic 3D-style horizontal spin effect */
+@keyframes emeraldSpin3D {
+    0% {
+        transform: scaleX(1) rotate(0deg);
+    }
+    50% {
+        transform: scaleX(0.1); /* Squeezes horizontally to mimic a side profile profile view */
+    }
+    100% {
+        transform: scaleX(1) rotate(360deg);
+    }
+}
+
+/* The class you apply directly to your image tag */
+.spinning-emerald {
+    display: inline-block;
+    width: 20px; /* Adjust sizing to fit your pixel art template grid layout */
+    height: auto;
+    /* Runs your custom animation infinitely every 3 seconds with a smooth linear tempo */
+    animation: emeraldSpin 3s linear infinite;
+    image-rendering: pixelated; /* Keeps your pixel graphics razor-sharp */
+    left: 5px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.spinning-emerald:hover {
+    animation-duration: 0.8s;
+}

@@ -1,7 +1,7 @@
-@import url('colours.css');
-@import url('typo.css');
-@import url('sonic-rings.css');
-@import url('compressions.css');
+@import url('modules/colours.css');
+@import url('modules/typo.css');
+@import url('modules/sonic-rings.css');
+@import url('modules/compressions.css');
 @import url('https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css');
 
 /* --- Defaults --- */

@@ -1,132 +1,106 @@
+/* Green Hill Zone Authentic Color Scheme */
 :root {
-    --color-true-green: #248a3d;
-    --color-dark-green: #165c26;
+    --ghz-green-light: #30e030;
+    --ghz-green-mid: #00a800;
+    --ghz-green-dark: #006000;
+    --ghz-brown-light: #e07800;
+    --ghz-brown-dark: #804000;
+    --color-dark-blue: #1d3557;
 }
 
-.guestbook-page-body {
+/* Background gradient mixing your new foliage green codes together */
+body.guestbook-page-body {
     margin: 0;
-    padding: 40px 20px;
-    font-family: sans-serif;
-    background-color: #f2faf4;
+    padding: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
+    background-color: var(--ghz-green-mid);
+    background-image: linear-gradient(
+        rgba(48, 224, 48, 0.35), 
+        rgba(0, 96, 0, 0.55)
+    ), url('/res/img/scenes/green-hill-zone.png'); /* Fallback to image layout layer when available */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
 }
 
-.guestbook-main-container {
+/* The Core Terminal Dashboard Card Wrapper Box */
+.guestbook-terminal {
+    background-color: #ffffff;
+    border: 3px solid var(--color-dark-blue);
+    border-radius: 6px;
+    /* Neubrutalist dual accent drop shadow utilizing soil browns */
+    box-shadow: 6px 6px 0px var(--ghz-brown-dark), 10px 10px 0px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Pure CSS Generates the Iconic 16-Bit Sonic Checkerboard Loop Pattern Bar */
+.terminal-header-pattern {
+    height: 24px;
+    border-bottom: 3px solid var(--color-dark-blue);
+    background-color: var(--ghz-brown-dark);
+    background-image: 
+        linear-gradient(45deg, var(--ghz-brown-light) 25%, transparent 25%), 
+        linear-gradient(-45deg, var(--ghz-brown-light) 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, var(--ghz-brown-light) 75%), 
+        linear-gradient(-45deg, transparent 75%, var(--ghz-brown-light) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Container locking down iframe dimensions safely for responsive scaling */
+.atabook-frame-wrap {
     width: 100%;
-    box-sizing: border-box;
+    height: 650px;
+    display: block;
 }
 
-.guestbook-header-section {
-    background-color: #ffffff;
-    border: 2px solid var(--color-true-green);
+/* Custom retro styling typography tweaks */
+.text-retro-glow {
+    color: var(--ghz-green-light);
+    text-shadow: 2px 2px 0px var(--color-dark-blue);
+    font-weight: 900;
+}
+
+/* Neubrutalist styled back navigation link button component */
+.style-retro-btn {
+    background-color: var(--ghz-green-light) !important;
+    color: var(--color-dark-blue) !important;
+    font-weight: bold !important;
+    border: 2px solid var(--color-dark-blue) !important;
+    box-shadow: 4px 4px 0px var(--ghz-brown-dark);
     border-radius: 4px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    margin-bottom: 20px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
 }
 
-.main-page-title {
-    color: var(--color-dark-green);
-    border-bottom: 3px solid var(--color-dark-green);
-    padding-bottom: 8px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 2rem;
+/* Interactive button spring physics animation */
+.style-retro-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--ghz-brown-dark);
+    background-color: #55f055 !important; /* Blazes brighter green on mouseover */
 }
 
-.subtitle-text {
-    font-style: italic;
-    color: #555555;
-    margin: 0;
+/* Container holding your button up in the top left edge layout boundary */
+.top-nav-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Keeps it layered securely above background vectors */
 }
 
-.guestbook-columns-grid {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 20px;
-}
-
-.guestbook-column-card {
-    flex: 1;
-    min-width: 0;
-    background-color: #ffffff;
-    border: 2px solid var(--color-true-green);
-    border-radius: 4px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
-    padding: 25px;
-    box-sizing: border-box;
-}
-
-.section-column-title {
-    color: var(--color-true-green);
-    font-size: 1.25rem;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-.iframe-wrap {
-    overflow: hidden;
-    background: transparent;
-}
-
-.guestbook-footer-section {
-    background-color: #ffffff;
-    border: 2px solid var(--color-true-green);
-    border-radius: 4px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
-    padding: 15px 20px;
-    display: inline-block;
-}
-
-.back-home-link {
-    display: inline-block;
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--color-true-green);
-}
-
-.back-home-link:hover {
-    text-decoration: underline;
-    color: var(--color-dark-green);
-}
-
-@media (max-width: 768px) {
-    .guestbook-columns-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .guestbook-column-card {
-        width: 100%;
+/* Responsive adjustment so it doesn't squash against your title text on small mobile screens */
+@media screen and (max-width: 768px) {
+    .top-nav-box {
+        position: static;
+        display: block;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
     }
 }
 
-/* LEFT CONTAINER: Drop a Ring */
-#cbox-form-wrap {
-    height: 300px; 
-    overflow: hidden;
-    position: relative;
-}
+/* guest book */
 
-#cbox-form-wrap iframe {
-    position: absolute;
-    top: -260px; 
-    left: 0;
-}
-
-/* RIGHT CONTAINER: Chaos Emeralds */
-#cbox-messages-wrap {
-    height: 330px; 
-    overflow: hidden;
-    position: relative;
-}
-
-#cbox-messages-wrap iframe {
-    position: absolute;
-    top: -55px; 
-    left: 0;
+#guestbook {
+    top: -50px;
 }

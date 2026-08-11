@@ -1,0 +1,55 @@
+@import url('modules/colours.css');
+@import url('modules/typo.css');
+@import url('modules/emeralds.css');
+@import url('modules/compressions.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #d0fcd5;
+    background-image: linear-gradient(
+        rgba(166, 250, 201, 0.4), 
+        rgba(208, 252, 213, 0.4)
+    ), url('/res/img/scenes/angel-island.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+}
+
+/* FIXED GRID: Formats your cells cleanly below the title text */
+#nav-grid {
+    display: grid;
+    /* Automatically handles desktop columns and shrinks cleanly for mobile screens */
+    grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Turns the basic text cells into translucent pixel-style navigation tiles */
+#nav-grid .cell {
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 2px solid var(--color-true-blue, #4a77b4);
+    border-radius: 4px;
+    padding: 16px 8px;
+    text-align: center;
+    font-weight: bold;
+    color: #1d3557;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* Interactive hover micro-animation */
+#nav-grid .cell:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+#nav-grid {
+    margin-bottom: 0 !important;
+}
