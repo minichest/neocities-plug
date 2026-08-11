@@ -3,31 +3,35 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Lost in Green Hill</title>
-    <!-- Fixed Bulma CDN Link -->
+    <title>404 - Lost in A Bad Future</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <link href="/res/css/404.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  <body>
+  <body class="error-page">
 
-    <section class="hero is-fullheight custom-404-bg">
+    <section class="hero is-fullheight">
       <div class="hero-body px-3">
         <div class="container">
           
           <div class="columns is-centered is-vcentered">
-            <div class="column is-12-mobile is-8-tablet is-6-desktop">
+            <!-- Responsive width controls: scales beautifully across all devices -->
+            <div class="column is-12-mobile is-8-tablet is-5-desktop is-4-widescreen">
               
-              <div class="p-6 mx-auto" style="background-color: #ffffff; border: 2px solid var(--color-true-blue); border-radius: 4px; box-shadow: 8px 8px 0px #000000; max-width: 520px;">
+              <div class="p-5 p-6-tablet custom-panel-box has-text-centered mx-auto">
                 
-                <div class="profile-pic mb-4">
-                  <img src="/res/img/sonic-tapping-gif.gif" alt="aezi graphic" style="image-rendering: pixelated; width: 96px;">
+                <div class="mb-4">
+                  <img src="/res/img/sonic-tapping-gif.gif" alt="sonic tapping foot" class="pixel-avatar">
                 </div>
 
-                <h1 class="error-title mb-2">404</h1>
-                <h2 class="error-subtitle mb-4">GAME OVER</h2>
-                <p class="error-text mb-5">Sonic fell into a bottomless pit. This page doesn't exist or has moved!</p>
+                <!-- CRT glitch animation wrapper -->
+                <h1 class="error-title glitch-effect mb-1">404</h1>
+                <h2 class="error-subtitle mb-4">game over</h2>
                 
-                <a href="/" class="button is-large custom-retro-btn">CONTINUE</a>
+                <p class="error-text mb-5">
+                 The time stones have been shattered and this timeline is corrupted. The directory path or file asset you are searching for does not exist in this future!
+                </p>
+                
+                <a href="/" class="button is-fullwidth custom-retro-btn">CONTINUE</a>
               </div>
 
             </div>

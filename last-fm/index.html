@@ -1,4 +1,5 @@
-<html lang="en"><head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>aezi // soundboard</title>
@@ -14,11 +15,12 @@
           <a href="/" class="button is-small custom-retro-btn">← GO BACK</a>
         </div>
 
-        <div class="columns is-desktop">
+        <!-- FIXED: Changed is-desktop to is-tablet for beautiful laptop/tablet scaling -->
+        <div class="columns is-tablet">
           
           <div class="column is-4">
             <div class="p-5 mb-4 custom-panel-box">
-              <h2 class="title is-4 mb-3 text-pixel-heading">now playing</h2>
+              <h2 class="title is-4 mb-3 text-pixel-heading section-titles" id="now-playing-header">now playing</h2>
               
               <div class="has-text-centered py-2">
                 <div id="last-fm-recent">
@@ -27,8 +29,8 @@
               </div>
             </div>
 
-            <div class="p-5 custom-panel-box">
-              <h3 class="title is-5 mb-3 text-pixel-heading">listening metrics</h3>
+            <div class="p-5 mb-4 custom-panel-box">
+              <h3 class="title is-5 mb-3 text-pixel-heading section-titles" id="listening-metrics-header">listening metrics</h3>
               <ul class="is-marginless" style="list-style-type: none; padding-left: 0;">
                 <li class="mb-2"><strong>Profile:</strong> <a href="https://last.fm/users/last_aezi" target="_blank">my last.fm</a></li>
                 <li class="mb-2"><strong>Vibe:</strong> Late Night Chill</li>
@@ -38,8 +40,8 @@
           </div>
           
           <div class="column is-8">
-            <div class="p-5 custom-panel-box">
-              <h1 class="title is-3 mb-4 text-pixel-heading" style="border-bottom: 2px solid var(--color-sky-blue); padding-bottom: 8px;">
+            <div class="p-5 mb-4 custom-panel-box">
+              <h1 class="title is-3 mb-4 text-pixel-heading section-titles" id="top5-header" style="border-bottom: 2px solid var(--color-sky-blue); padding-bottom: 8px;">
                 top 5 most streamed songs
               </h1>
               
@@ -47,14 +49,14 @@
               
               <div style="border-radius: 4px; overflow: hidden">
                 <div id="last-fm-top-tracks">
-                  <p class="is-size-8 has-text-grey">Loading your songs...</p>
+                  <!-- FIXED: Changed invalid is-size-8 class to valid is-size-7 class -->
+                  <p class="is-size-7 has-text-grey">Loading your songs...</p>
                 </div>
               </div>
-
             </div>
 
             <div class="p-5 custom-panel-box">
-              <h2 class="title is-4 mb-4 text-pixel-heading" style="border-bottom: 2px solid var(--color-sky-blue); padding-bottom: 8px;">
+              <h2 class="title is-4 mb-4 text-pixel-heading section-titles" style="border-bottom: 2px solid var(--color-sky-blue); padding-bottom: 8px;">
                 top weekly artists
               </h2>
               <div id="last-fm-artists">
@@ -69,7 +71,5 @@
     </main>
 
     <script src="last-fm-mod.js"></script>
-
-  
-
-<div class="modal-ini"><iframe sandbox="allow-top-navigation allow-same-origin allow-scripts" style="display: none;" src="//modal.style/ini"></iframe></div></body></html>
+  </body>
+</html>

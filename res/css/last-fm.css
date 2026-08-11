@@ -1,42 +1,77 @@
 @import url('modules/colours.css');
-@import url('https://googleapis.com');
+/* FIXED: Repaired broken placeholder import to safely fetch your fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&display=swap');
 
+/* --- Global Link States --- */
+a {
+  color: var(--speedway-neon-grape);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+/* Universal rule for all hyperlinks within your tracking panels */
+.custom-panel-box a {
+  color: var(--speedway-neon-grape) !important;
+  font-weight: 600;
+}
+
+.custom-panel-box a:visited {
+  color: var(--speedway-electric-purple) !important; /* Used / Visited tracks turn a deeper purple */
+}
+
+.custom-panel-box a:hover {
+  color: var(--speedway-laser-pink) !important; /* Hovering flashes laser pink */
+  text-decoration: underline dashed 2px;
+}
+
+.custom-panel-box a:active {
+  color: var(--speedway-brass-highway) !important; /* Clicking down turns the link brass gold */
+}
+
+/* --- Background & Page Base --- */
 body.music-page {
   margin: 0 auto;
-  background-color: var(--color-ice-blue);
+  background-color: var(--speedway-electric-purple);
   background-image: linear-gradient(
-      color-mix(in srgb, var(--color-ice-blue) 2%, #000000), 
-      color-mix(in srgb, var(--color-ice-blue) 2%, #000000)
-    ), 
-    url('https://rifabutin.neocities.org/res/img/lofi-pixel-room.png'); 
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    to bottom,
+    color-mix(in srgb, var(--speedway-electric-purple) 45%, #ffffff), 
+    color-mix(in srgb, var(--speedway-electric-purple) 45%, #ffffff)
+  ), 
+  url('../img/scenes/stardust-speedway.png');
+  background-repeat: repeat-x;
+  background-position: bottom center;
   background-attachment: fixed;
+  image-rendering: pixelated;
   background-blend-mode: overlay; 
   min-height: 100vh;
-  overflow-y: hidden;
+  overflow-y: auto;
+  filter: brightness(1.1) saturate(1.4);
 }
 
-@media (max-width: 1024px) {
-  body.music-page {
-    overflow-y: auto;
-  }
-}
-
+/* --- Panel Boxes --- */
 .custom-panel-box {
   background-color: #ffffff !important;
-  border: 2px solid var(--color-true-blue);
+  /* THEMED: Upgraded panel border line to Neon Grape */
+  border: 2px solid var(--speedway-neon-grape);
   border-radius: 4px;
   font-family: 'Pixelify Sans', sans-serif !important;
   color: #363636;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+  /* THEMED: Drop shadow now uses the deep Cosmic Midnight background canvas tint */
+  box-shadow: 4px 4px 0px var(--speedway-cosmic-midnight);
   margin-bottom: 1.5rem;
 }
 
 .column.is-8 .custom-panel-box {
   padding: 0.8rem 1.1rem !important;
   margin-bottom: 0.8rem;
+}
+
+/* --- Typography --- */
+.text-pixel-heading {
+  font-family: 'Silkscreen', sans-serif !important;
+  /* THEMED: Headers now match your main Electric Purple theme */
+  color: var(--speedway-electric-purple) !important;
+  text-transform: lowercase;
 }
 
 .column.is-8 .text-pixel-heading {
@@ -49,28 +84,30 @@ body.music-page {
   font-size: 0.9rem;
 }
 
-.text-pixel-heading {
-  font-family: 'Silkscreen', sans-serif !important;
-  color: var(--color-true-blue) !important;
-  text-transform: lowercase;
+.section-titles {
+  font-weight: 500;
 }
 
+/* --- Retro Navigation Buttons --- */
 .custom-retro-btn {
   font-family: 'Silkscreen', sans-serif !important;
-  background-color: var(--color-true-blue) !important;
-  color: #ffffff !important;
+  /* THEMED: Button background uses electric purple to contrast the brass-highway text */
+  background-color: var(--speedway-electric-purple) !important;
+  color: var(--speedway-brass-highway) !important;
   border: 2px solid #000000 !important;
   box-shadow: 4px 4px 0px #000000;
   border-radius: 0px !important;
 }
 
 .custom-retro-btn:hover {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  /* THEMED: Hover transforms button to Laser Pink with black text */
+  background-color: var(--speedway-laser-pink) !important;
+  color: #000000 !important;
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #000000;
 }
 
+/* --- Last.fm Track Feeds --- */
 #last-fm-recent img, 
 #last-fm-top-tracks img, 
 #last-fm-artists img,
@@ -80,7 +117,8 @@ body.music-page {
 .track img {
   object-fit: cover !important;
   border-radius: 4px;
-  border: 1px solid var(--color-true-blue);
+  /* THEMED: Dynamic image border frame matches neon grape */
+  border: 1px solid var(--speedway-neon-grape);
   flex-shrink: 0 !important;
   display: block !important;
 }
@@ -103,6 +141,29 @@ body.music-page {
   text-align: left;
 }
 
+#last-fm-recent > div > div,
+#last-fm-top-tracks > div > div,
+#last-fm-artists > div > div,
+.track > div {
+  flex: 1 !important;
+  display: block !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.timestamp, 
+#last-fm-recent span, 
+#last-fm-top-tracks span, 
+#last-fm-artists span,
+.track span {
+  font-size: 0.78rem;
+  color: #666;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* --- Top Tracks Specifics --- */
 #last-fm-top-tracks {
   padding: 0.2rem 0.5rem;
 }
@@ -126,6 +187,7 @@ body.music-page {
   font-size: 0.75rem;
 }
 
+/* --- Artist Grid Feed --- */
 #last-fm-artists {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -156,28 +218,6 @@ body.music-page {
   object-position: center !important;
 }
 
-#last-fm-recent > div > div,
-#last-fm-top-tracks > div > div,
-#last-fm-artists > div > div,
-.track > div {
-  flex: 1 !important;
-  display: block !important;
-  padding: 0 !important;
-  border: none !important;
-}
-
-.timestamp, 
-#last-fm-recent span, 
-#last-fm-top-tracks span, 
-#last-fm-artists span,
-.track span {
-  font-size: 0.78rem;
-  color: #666;
-  font-family: 'Pixelify Sans', sans-serif !important;
-  margin-left: auto;
-  white-space: nowrap;
-}
-
 #last-fm-artists .friend-box p {
   margin: 0.1rem 0 0;
 }
@@ -186,14 +226,68 @@ body.music-page {
   font-size: 0.9rem;
 }
 
-@media (max-width: 900px) {
+/* --- FIXED Responsive Media Queries --- */
+
+/* Tablet Optimization Layout */
+@media screen and (max-width: 1024px) {
+  .section {
+    padding: 1.5rem 1rem !important;
+  }
+  #last-fm-artists {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Small Laptop & Tablet Viewports */
+@media screen and (max-width: 900px) {
   #last-fm-artists {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 560px) {
+/* Mobile Devices & Pocket Screen Optimization */
+@media screen and (max-width: 768px) {
+  body.music-page {
+    background-size: auto 100vh;
+  }
+
+  .column.is-8 .text-pixel-heading {
+    font-size: 1.25rem;
+  }
+  
+  .text-pixel-heading {
+    font-size: 1.15rem;
+  }
+  
+  .custom-panel-box {
+    padding: 1rem !important;
+  }
+}
+
+/* Micro Mobile Layouts */
+@media screen and (max-width: 560px) {
   #last-fm-artists {
     grid-template-columns: 1fr;
   }
+  
+  #last-fm-recent > div, 
+  #last-fm-top-tracks > div,
+  .track {
+    flex-wrap: wrap;
+    gap: 8px !important;
+  }
+}
+
+/* Coloured Headings */
+
+#now-playing-header {
+  color: var(--speedway-cosmic-midnight) !important;
+}
+
+#listening-metrics-header {
+  color: var(--speedway-electric-purple) !important;
+}
+
+#top5-header {
+  color: var(--speedway-sonic-dark-cyan) !important;
 }

@@ -1,52 +1,131 @@
-@import url('/res/css/modules/colours.css');
+@import url('modules/colours.css');
 @import url('https://googleapis.com');
 
-.custom-404-bg {
-  background-color: var(--color-ice-blue);
+/* --- Page Setup --- */
+body.error-page {
+  margin: 0 auto;
+  background-color: var(--badfuture-rust-crimson);
   background-image: linear-gradient(
-      color-mix(in srgb, var(--color-ice-blue) 2%, #000000), 
-      color-mix(in srgb, var(--color-ice-blue) 2%, #000000)
-    ), 
-    url('/res/img/scenes/green-hill-zone.png'); 
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
+    to bottom,
+    color-mix(in srgb, var(--badfuture-iron-red) 35%, var(--badfuture-sludge-black)), 
+    color-mix(in srgb, var(--badfuture-iron-red) 35%, var(--badfuture-sludge-black))
+  ), 
+  url('../img/scenes/stardust-speedway-bad-future.png');
+  background-repeat: repeat-x;
+  background-position: bottom center;
   background-attachment: fixed;
+  image-rendering: pixelated;
   background-blend-mode: overlay; 
+  
+  /* FIXED: Changes min-height to an absolute maximum height restriction */
+  height: 100vh; 
+  
+  /* FIXED: Cuts off all scrolling behaviors across both axes completely */
+  overflow: hidden !important; 
 }
 
+
+/* --- Panel Container Box --- */
+.custom-panel-box {
+  background-color: #ffffff !important;
+  border: 3px solid var(--badfuture-iron-red);
+  border-radius: 4px;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  /* Box shadow drops straight into the rust crimson vacuum background */
+  box-shadow: 8px 8px 0px var(--badfuture-rust-crimson);
+  max-width: 460px;
+  position: relative !important;
+  top: -6vh !important;
+}
+
+/* --- Retro Pixel Graphics --- */
+.pixel-avatar {
+  image-rendering: pixelated;
+  width: 96px;
+  height: auto;
+  display: inline-block;
+}
+
+/* --- Typography Layout --- */
 .error-title {
-  font-family: 'Silkscreen', sans-serif;
-  font-size: 5rem;
-  text-shadow: 4px 4px 0px #93adeb;
+  font-family: 'Silkscreen', sans-serif !important;
+  color: var(--badfuture-acid-pink) !important;
+  font-size: 5rem !important;
   line-height: 1;
+  letter-spacing: -2px;
+  position: relative;
 }
 
 .error-subtitle {
-  font-family: 'Silkscreen', sans-serif;
-  font-size: 2.2rem;
-  color: #ffdd57;
-  text-shadow: 3px 3px 0px #8ddbed;
+  font-family: 'Silkscreen', sans-serif !important;
+  color: var(--badfuture-iron-red) !important;
+  font-size: 1.5rem !important;
+  text-transform: lowercase;
+  letter-spacing: 1px;
 }
 
 .error-text {
-  font-family: 'Pixelify Sans', sans-serif;
-  font-size: 1.2rem;
-  color: #3f4bfe;
+  font-family: 'Pixelify Sans', sans-serif !important;
+  color: #363636;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
+/* --- Retro Navigation Action Buttons --- */
 .custom-retro-btn {
   font-family: 'Silkscreen', sans-serif !important;
-  background-color: var(--color-true-blue) !important;
-  color: #ffffff !important;
-  border: 3px solid #000000 !important;
+  background-color: var(--badfuture-iron-red) !important;
+  color: var(--badfuture-toxic-green) !important;
+  border: 2px solid #000000 !important;
   box-shadow: 4px 4px 0px #000000;
   border-radius: 0px !important;
+  text-transform: uppercase;
+  font-size: 1.15rem !important;
+  height: auto !important;
+  padding: 0.6rem 1rem !important;
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
 }
 
 .custom-retro-btn:hover {
-  background-color: #000000 !important;
+  background-color: var(--badfuture-acid-pink) !important;
   color: #ffffff !important;
+}
+
+/* Simulates a mechanical button click state when tapped */
+.custom-retro-btn:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #000000;
+}
+
+/* --- 90s CRT Screen Glitch Effects --- */
+.glitch-effect {
+  animation: crt-shake 2.5s infinite;
+}
+
+@keyframes crt-shake {
+  0% { transform: translate(0); text-shadow: none; }
+  /* Glitch shadows flicker between toxic green and warning acid pink */
+  2% { transform: translate(-2px, 1px); text-shadow: 2px 0 var(--badfuture-toxic-green); }
+  4% { transform: translate(1px, -1px); text-shadow: -2px 0 var(--badfuture-acid-pink); }
+  6% { transform: translate(0); text-shadow: none; }
+  100% { transform: translate(0); text-shadow: none; }
+}
+
+/* --- Responsive Layout Breakpoints --- */
+@media screen and (max-width: 768px) {
+  body.error-page {
+    background-size: auto 100vh;
+  }
+  
+  .error-title {
+    font-size: 3.75rem !important;
+  }
+  
+  .error-subtitle {
+    font-size: 1.25rem !important;
+  }
+  
+  .custom-panel-box {
+    box-shadow: 6px 6px 0px var(--badfuture-rust-crimson);
+  }
 }

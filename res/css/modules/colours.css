@@ -6,6 +6,22 @@
   --color-light-blue:    #86cefa;
   --color-ice-blue:      #e0f2fe;
   --color-periblue:      #cedffc;
+
+  /* speedway 2 */
+  --speedway-cosmic-midnight: #1c0c30;
+  --speedway-electric-purple: #381068;
+  --speedway-neon-grape: #681890;
+  --speedway-laser-pink: #ff1493;
+  --speedway-sonic-cyan: #00ffff;
+  --speedway-sonic-dark-cyan: #028484;
+  --speedway-brass-highway: #ffcc00;
+
+  /* bad future - colourway */
+  --badfuture-rust-crimson: #200408;
+  --badfuture-iron-red: #480810;
+  --badfuture-acid-pink: #e41858;
+  --badfuture-toxic-green: #00ff66;
+  --badfuture-sludge-black: #0c0204;
 }
 
 /* --- Defaults --- */
