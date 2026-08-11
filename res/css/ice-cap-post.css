@@ -1,0 +1,197 @@
+@import url('https://googleapis.com');
+
+/* --- Background & Page Base --- */
+body.post-page {
+  margin: 0 auto;
+  background-color: var(--icecap-deep-glacier);
+  /* Tint overlay protects text readability over the snowy patterns */
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--icecap-deep-glacier) 20%, transparent),
+    color-mix(in srgb, var(--icecap-deep-glacier) 50%, transparent)
+  ), 
+  url('../img/scenes/ice-cap-zone.png');
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-attachment: fixed;
+  image-rendering: pixelated;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* --- Main White Article Container Card --- */
+.post-panel-box {
+  background-color: #ffffff !important;
+  border: 3px solid var(--icecap-frost-blue);
+  border-radius: 4px;
+  box-shadow: 8px 8px 0px var(--icecap-deep-glacier);
+  max-width: 720px; /* Wider canvas optimal for comfortable article reading */
+  margin: 0 auto 2rem;
+}
+
+/* --- Individual Blog Post Content Layout --- */
+.post-content {
+  font-family: 'Pixelify Sans', sans-serif !important;
+  line-height: 1.6;
+  color: #2b2b2b;
+}
+
+/* --- Inline Typography Elements --- */
+.post-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+/* Handle markdown / content headings gracefully inside the post */
+.post-content h1, 
+.post-content h2, 
+.post-content h3 {
+  font-family: 'Silkscreen', sans-serif !important;
+  color: var(--icecap-deep-glacier) !important;
+  text-transform: lowercase;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.post-content h1 { font-size: 1.75rem; }
+.post-content h2 { font-size: 1.45rem; }
+.post-content h3 { font-size: 1.2rem; }
+
+/* --- Hyperlink Interaction Loop --- */
+.post-content a {
+  color: var(--icecap-frost-blue) !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.1s ease-in-out;
+}
+
+.post-content a:visited {
+  color: var(--icecap-deep-glacier) !important;
+}
+
+.post-content a:hover {
+  color: var(--icecap-neon-chill) !important;
+  text-decoration: underline dashed 2px;
+}
+
+/* --- Retro Code Snippets & Technical Logs --- */
+.post-content pre {
+  background-color: var(--icecap-deep-glacier) !important;
+  border-left: 4px solid var(--icecap-neon-chill);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.post-content code {
+  font-family: 'Courier New', Courier, monospace !important;
+  background-color: transparent;
+  color: var(--icecap-snow-powder) !important;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+/* For small code blocks directly inside paragraphs */
+.post-content p code {
+  background-color: color-mix(in srgb, var(--icecap-snow-powder) 40%, #ffffff) !important;
+  color: var(--icecap-deep-glacier) !important;
+  padding: 2px 6px !important;
+  border-radius: 3px;
+  font-size: 0.88rem;
+  border: 1px solid var(--icecap-frost-blue);
+}
+
+/* --- Retro Blockquotes & Callouts --- */
+.post-content blockquote {
+  background-color: color-mix(in srgb, var(--icecap-snow-powder) 25%, #ffffff) !important;
+  border-left: 4px solid var(--icecap-frost-blue);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #4a4a4a;
+}
+
+/* --- Embedded Post Images --- */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border: 2px solid var(--icecap-frost-blue);
+  border-radius: 4px;
+  box-shadow: 4px 4px 0px var(--icecap-deep-glacier);
+  image-rendering: pixelated;
+}
+
+/* --- Lists Handling --- */
+.post-content ul, 
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Retro Navigation Buttons --- */
+.custom-retro-btn {
+  font-family: 'Silkscreen', sans-serif !important;
+  background-color: var(--icecap-deep-glacier) !important;
+  color: var(--icecap-snow-powder) !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0px !important;
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+.custom-retro-btn:hover {
+  background-color: var(--icecap-frost-blue) !important;
+  color: #ffffff !important;
+}
+
+.custom-retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* --- MOBILE & RESPONSIVE BREAKPOINTS --- */
+@media screen and (max-width: 768px) {
+  body.post-page {
+    background-size: auto 100vh; /* Locks pixel landscape ratio securely on phones */
+  }
+
+  .post-panel-box {
+    padding: 1.25rem !important;
+    box-shadow: 4px 4px 0px var(--icecap-deep-glacier);
+    margin-bottom: 1.25rem;
+  }
+
+  .post-content p {
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Compresses article headers down to stop line breakage on mobile */
+  .post-content h1 { font-size: 1.4rem; }
+  .post-content h2 { font-size: 1.25rem; }
+  .post-content h3 { font-size: 1.1rem; }
+  
+  .post-content pre {
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .post-content blockquote {
+    padding: 0.75rem;
+    margin: 1.25rem 0;
+  }
+  
+  .post-content img {
+    margin: 1.25rem auto;
+    box-shadow: 3px 3px 0px var(--icecap-deep-glacier);
+  }
+}
