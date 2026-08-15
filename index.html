@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="connect-src 'self' data: blob: https://status.cafe;">
     <title>aezi</title>
-    <link rel="stylesheet" href="https://jsdelivr.net">
+    
+    <!-- Speed up connection to external API -->
+    <link rel="preconnect" href="https://status.cafe">
+    
+    <!-- FIXED: Points to a valid Bulma framework distribution path on jsDelivr CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <link href="/res/css/index.css" rel="stylesheet" type="text/css" media="all">
   </head>
   
@@ -21,7 +26,7 @@
           
           <!-- LEFT SIDEBAR PANEL -->
           <div class="column is-12-mobile is-4-tablet is-4-desktop">
-              <!-- COMPACTED: Max-height limit added to graphic to maintain a low profile -->
+              <!-- UNTOUCHED: Keeping your original PNG asset structure and style configurations exactly as they were -->
               <div class="profile-pic mb-3 has-text-centered-mobile">
                 <img src="/res/img/sonic-pixelated-2.png" alt="aezi graphic" style="max-width: 100%; max-height: 100px; width: auto; height: auto; object-fit: contain;">
               </div>
@@ -42,8 +47,6 @@
                         <div id="statuscafe-username" class="is-size-6 mb-1"></div>
                         <div id="statuscafe-content" class="is-size-6"></div>
                     </div>
-                    
-                    <script src="/res/js/status-cafe.js" defer></script>
                 </div>
               </div>
           </div>
@@ -89,5 +92,8 @@
         </div>
       </div>
     </footer>
+
+    <!-- OPTIMIZED: Script moved to bottom of body to eliminate rendering blocks -->
+    <script src="/res/js/status-cafe.js" defer></script>
   </body>
 </html>

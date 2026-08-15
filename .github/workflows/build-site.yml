@@ -27,7 +27,7 @@ jobs:
         with:
           api_token: ${{ secrets.NEOCITIES_API_KEY }}
           dist_dir: .
-          cleanup: false
+          cleanup: true
 
       # STEP 3: Fallback deployment engine targeting the root directory in case the primary fails
       - name: Deploy to Neocities fallback
