@@ -25,7 +25,7 @@ body {
     
     /* Allow scrolling on mobile screens if the cabinet is taller than the phone viewport */
     overflow-x: hidden; 
-    overflow-y: auto; 
+    overflow-y: hidden; 
     
     background-color: #0b0214; 
     background-image: linear-gradient(
@@ -35,7 +35,7 @@ body {
     
     background-repeat: repeat-x;        
     background-position: center bottom; 
-    background-size: auto 75vh;        
+    background-size: auto 100vh;        
     background-attachment: fixed;
     
     image-rendering: -moz-crisp-edges;
