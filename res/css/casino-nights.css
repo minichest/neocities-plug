@@ -196,17 +196,31 @@ body {
 /* ==========================================================================
    3. RETRO GAME CABINET CONTROLLER
    ========================================================================== */
+/* Ensure the cabinet container acts as a solid bounding anchor */
 .game-cabinet {
     background-color: #000;
     border: 4px solid var(--color-neon-pink, #ff2a7a);
     border-radius: 8px;
-    /* Intense outer drop shadow glow matching the casino style */
     box-shadow: 0px 0px 30px rgba(255, 42, 122, 0.3), 0px 15px 35px rgba(0, 0, 0, 0.6);
     position: relative;
-    aspect-ratio: 560 / 384; /* Maintains perfect Flash game aspect ratio dimensions */
+    aspect-ratio: 560 / 384; 
     width: 100%;
     overflow: hidden;
+    box-sizing: border-box;
 }
+
+/* Force the iframe to stretch out completely and fill your pink borders */
+.game-cabinet iframe {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    /* Implements your 24px buffer to hide inner browser tracking scrollbars */
+    width: calc(100% + 24px) !important;
+    height: calc(100% + 24px) !important;
+    border: none;
+    display: block;
+}
+
 
 /* CRT monitor arcade scanline glass filter */
 .scanlines {
