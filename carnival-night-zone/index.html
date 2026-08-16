@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carnival Night Zone - Directories</title>
+        <!-- Bulma CSS Framework (v1.0.0 Upgrade) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+        
+        <!-- GOOGLE FONTS: Loads the crisp, pixelated VT323 typography framework -->
+        <link rel="preconnect" href="https://googleapis.com">
+        <link rel="preconnect" href="https://gstatic.com" crossorigin>
+        <link href="https://googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        
+        <!-- Points directly to your separate Carnival Night styling file -->
+        <link rel="stylesheet" href="/res/css/carnival-night-zone.css">
+    </head>
+    <body class="carnival-body">
+    <section class="section py-6">
+        <div class="container">
+            
+            <!-- Navigation Header Group -->
+            <div class="mb-6 mx-3 has-text-centered">
+                <a href="javascript:history.back()" class="button is-small is-outlined is-info mb-4 cnz-back-btn">← Return Back</a>
+                <h1 class="title is-1 carnival-main-title">CARNIVAL NIGHT ZONE</h1>
+                <p class="subtitle is-5 has-text-white cnz-sub">Welcome to Night Time Carnival Chaos...</p>
+            </div>
+
+            <!-- FIXED RESPONSIVE GRID WRAPPER: 
+                 Using Bulma's 'columns is-multiline is-mobile' architecture forces clean row collapsing profiles. -->
+            <div class="columns is-multiline is-mobile is-centered px-3" id="directory-grid">
+                
+                <!-- ====== CATEGORY 1: NEOCITIES I RATE ====== -->
+                <!-- is-12-mobile forces full-width row stacking on phones.
+                     is-6-tablet arranges elements 2-across on iPads.
+                     is-4-desktop locks into 3-across side-by-side alignment on monitors. -->
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="box carnival-card p-5">
+                        <h2 class="title is-4 cnz-card-title mb-3">🌐 Great Neocities</h2>
+                        <p class="is-size-5 mb-5 has-text-grey-light">Sites I have seen that I really like on Neocities itself.</p>
+                        
+                        <div class="buttons">
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Cool Site One</a>
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Cool Site Two</a>
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Cool Site Three</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== CATEGORY 2: STRANGE SITES ====== -->
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="box carnival-card p-5">
+                        <h2 class="title is-4 cnz-card-title mb-3">👾 Strange Sites</h2>
+                        <p class="is-size-5 mb-5 has-text-grey-light">Obscure online spaces and especially internet oddities.</p>
+                        
+                        <div class="buttons">
+                            <a href="https://museum.lingscars.com" target="_blank" class="button is-fullwidth cnz-btn">Ling's Cars</a>
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Badnik B</a>
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Badnik C</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== CATEGORY 3: EXTENSIONS FROM PPL I RATE ====== -->
+                <div class="column is-12-mobile is-12-tablet is-4-desktop">
+                    <div class="box carnival-card p-5">
+                        <h2 class="title is-4 cnz-card-title mb-3">🛠️ Fav Extensions</h2>
+                        <p class="is-size-5 mb-5 has-text-grey-light">Custom tools and web wrappers that are great...believe me on it</p>
+                        
+                        <div class="buttons">
+                            <a href="https://bleh.katelyn.moe" target="_blank" class="button is-fullwidth cnz-btn">bleh (last.fm)</a>
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Experiment B</a>
+                            <a href="#" target="_blank" class="button is-fullwidth cnz-btn">Experiment C</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>

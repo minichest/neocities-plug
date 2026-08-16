@@ -1,0 +1,244 @@
+/* ==========================================================================
+   1. SHARED DESIGN MODULES
+   ========================================================================== */
+@import url('modules/colours.css');
+@import url('modules/typo.css');
+@import url('modules/emeralds.css');
+@import url('modules/compressions.css');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* ==========================================================================
+   1. SHARED DESIGN MODULES
+   ========================================================================== */
+@import url('modules/colours.css');
+@import url('modules/typo.css');
+@import url('modules/emeralds.css');
+@import url('modules/compressions.css');
+
+/* ==========================================================================
+   2. CASINO NIGHT THEME & LAYOUT (DEFAULT / PC)
+   ========================================================================== */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    /* Allow scrolling on mobile screens if the cabinet is taller than the phone viewport */
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    
+    background-color: #0b0214; 
+    background-image: linear-gradient(
+        rgba(11, 2, 20, 0.4), 
+        rgba(11, 2, 20, 0.7)
+    ), url('/res/img/scenes/casino-nights.gif');
+    
+    background-repeat: repeat-x;        
+    background-position: center bottom; 
+    background-size: auto 75vh;        
+    background-attachment: fixed;
+    
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;         
+}
+
+.arcade-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* MARQUEE HEADER LAYOUT */
+#nav-grid {
+    display: flex;
+    align-items: center;       
+    justify-content: flex-start; 
+    margin-bottom: 30px !important;
+    padding: 0;
+    width: 100%;
+}
+
+/* Back Button configuration */
+#nav-grid .cell {
+    background-color: rgba(22, 11, 38, 0.85);
+    border: 2px solid var(--color-neon-pink, #ff2a7a);
+    border-radius: 6px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 40px; /* Decent spacious gap before title */
+    box-shadow: 0px 0px 10px rgba(255, 42, 122, 0.4);
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.6);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+}
+
+#nav-grid .cell:hover {
+    transform: scale(1.05);
+    border-color: var(--color-neon-gold, #ffcc00);
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8);
+    text-shadow: 0px 0px 6px #ffcc00;
+}
+
+/* Casino Title configuration */
+#nav-grid h1 {
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace, sans-serif; /* Utilizing your linked retro font */
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-shadow: 
+        0px 0px 5px #fff, 
+        0px 0px 12px var(--color-neon-pink, #ff2a7a), 
+        0px 0px 25px var(--color-neon-pink, #ff2a7a);
+}
+
+/* ==========================================================================
+   3. RETRO GAME CABINET CONTROLLER
+   ========================================================================== */
+.game-cabinet {
+    background-color: #000;
+    border: 4px solid var(--color-neon-pink, #ff2a7a);
+    border-radius: 8px;
+    box-shadow: 0px 0px 30px rgba(255, 42, 122, 0.3), 0px 15px 35px rgba(0, 0, 0, 0.6);
+    position: relative;
+    aspect-ratio: 560 / 384; /* Standard aspect ratio constraint */
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none; 
+}
+
+/* ==========================================================================
+   4. RUFFLE HARD-EMULATION SCALING FIXES
+   ========================================================================== */
+#ruffle-player {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#ruffle-player ruffle-player,
+#ruffle-player object,
+#ruffle-player embed {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    image-rendering: pixelated; 
+    image-rendering: crisp-edges;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE MEDIA QUERIES (TABLETS & PHONES)
+   ========================================================================== */
+
+/* TABLET MODE (Screens narrower than 768px wide) */
+@media (max-width: 768px) {
+    .arcade-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    #nav-grid h1 {
+        font-size: 2.5rem; /* Scales font down to fit narrower rows */
+    }
+    
+    #nav-grid .cell {
+        margin-right: 25px; /* Compresses gap size slightly */
+    }
+}
+
+/* PHONE MODE (Screens narrower than 480px wide) */
+@media (max-width: 480px) {
+    .arcade-container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+
+    /* Stacks elements vertically so titles aren't squeezed completely flat */
+    #nav-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px !important;
+    }
+
+    #nav-grid .cell {
+        margin-right: 0; /* Clear horizontal margin since stacked */
+        width: 100%;     /* Back button becomes full-width on mobile phone menus */
+        max-width: 150px;
+        box-sizing: border-box;
+    }
+
+    #nav-grid h1 {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+}
+
+
+/* ==========================================================================
+   3. RETRO GAME CABINET CONTROLLER
+   ========================================================================== */
+.game-cabinet {
+    background-color: #000;
+    border: 4px solid var(--color-neon-pink, #ff2a7a);
+    border-radius: 8px;
+    /* Intense outer drop shadow glow matching the casino style */
+    box-shadow: 0px 0px 30px rgba(255, 42, 122, 0.3), 0px 15px 35px rgba(0, 0, 0, 0.6);
+    position: relative;
+    aspect-ratio: 560 / 384; /* Maintains perfect Flash game aspect ratio dimensions */
+    width: 100%;
+    overflow: hidden;
+}
+
+/* CRT monitor arcade scanline glass filter */
+.scanlines {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none; /* Passes click tracking through to the iframe smoothly */
+}
+
+/* ==========================================================================
+   4. RUFFLE HARD-EMULATION SCALING FIXES
+   ========================================================================== */
+/* Ensures your placeholder target div fills the structural bounds */
+#ruffle-player {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Forces Ruffle's custom injected components to expand 100% to fill container */
+#ruffle-player ruffle-player,
+#ruffle-player object,
+#ruffle-player embed {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    /* Keeps old retro graphics pixelated and crisp when blown up large */
+    image-rendering: pixelated; 
+    image-rendering: crisp-edges;
+}

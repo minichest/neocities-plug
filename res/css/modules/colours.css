@@ -28,6 +28,13 @@
   --icecap-frost-blue: #2c64b0;
   --icecap-neon-chill: #44ccff;
   --icecap-snow-powder: #e0f8ff;
+
+  /* carnival night colours */
+  --cnz-bg-dark: #0c0a24;
+  --cnz-bg-shadow: #080018;
+  --cnz-neon-pink: #ff00ff;
+  --cnz-neon-cyan: #00ffff;
+  --cnz-ring-yellow: #fffb00;
 }
 
 /* --- Defaults --- */

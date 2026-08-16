@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- CRITICAL FOR PHONE/TABLET RESPONSIVENESS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Casino Night Arcade</title>
+    
+    <!-- Load the official standalone Ruffle Player emulator script -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/res/css/casino-nights.css">
+</head>
+<body>
+
+    <div class="arcade-container">
+        <div id="nav-grid">
+            <a href="#" onclick="history.back(); return false;" class="cell">◀ BACK 🎰</a>
+            <h1>Casino Nights</h1>
+        </div>
+
+        <!-- The game frame container -->
+        <div class="game-cabinet">
+            <div class="scanlines"></div>
+            <!-- Your target container where the game will mount -->
+            <div id="ruffle-player"></div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("ruffle-player");
+            container.appendChild(player);
+
+            // CRITICAL CONFIG: This property prevents audio from pausing on tab switch!
+            player.load({
+                url: "/res/games/sonic-scene-creator-v.2.swf",
+                pageVisibility: false
+            });
+        });
+    </script>
+
+</body>
+</html>

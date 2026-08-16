@@ -1,0 +1,124 @@
+@import url('modules/colours.css');
+
+/* Enforces rigid root dimensions across phone viewports */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+/* Base text properties for your body text elements */
+.carnival-body {
+    font-family: 'VT323', monospace;
+    font-size: 1.35rem; 
+    color: #ffffff;
+}
+
+/* FIXING THE SCROLL GAP BUG: 
+   Injecting a pseudo-element layer isolates the background completely.
+   It creates a rigid canvas that remains static while your Bulma cells scroll naturally. */
+body::before {
+    content: "";
+    position: fixed; /* Holds the imagery stationary behind the columns */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Keeps the backdrop tucked safely underneath your text */
+    
+    /* 1. Layers your color mask over the scene image file path */
+    background-image: linear-gradient(
+        rgba(255, 109, 255, 0.4), /* 40% Opaque Carnival Magenta (Top) */
+        rgba(0, 255, 255, 0.4)   /* 40% Opaque Skyline Cyan (Bottom) */
+    ), url('/res/img/scenes/carnival-night-zone.jpg');
+    
+    background-repeat: no-repeat;
+    background-position: center bottom; /* Anchors ferris wheels to screen base */
+    background-size: cover; /* Forces the graphics to stretch flawlessly across mobile browsers */
+    
+    /* Crisp retro rendering engine rules */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* BULMA v1.0.0 NATIVE GRID SPACE FIXES:
+   Maintains a uniform gap between the three card directories */
+.grid {
+    --bulma-grid-gap: 2rem !important; 
+}
+
+.cell {
+    height: 100%;
+}
+
+/* Text shadow configurations for headers */
+.carnival-main-title {
+    font-family: 'VT323', monospace;
+    font-size: 4.5rem !important; 
+    color: var(--cnz-ring-yellow) !important;
+    text-shadow: 4px 4px 0px #000000;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.cnz-sub {
+    font-size: 1.6rem !important;
+    text-shadow: 2px 2px #000000;
+}
+
+/* Back button text transformation rules */
+.cnz-back-btn {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Semi-transparent midnight box cards to keep text legible over bright neon graphics */
+.carnival-card {
+    background-color: rgba(12, 10, 36, 0.94) !important;
+    border: 2px solid var(--cnz-neon-pink) !important;
+    border-radius: 6px;
+    box-shadow: 0 0 14px rgba(255, 0, 255, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    height: 100%;
+}
+
+/* Responsive box scaling and color transformation on cursor hover */
+.carnival-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cnz-neon-cyan) !important;
+    box-shadow: 0 0 24px rgba(0, 255, 255, 0.7);
+}
+
+/* Card titles */
+.cnz-card-title {
+    font-family: 'VT323', monospace;
+    font-size: 2.2rem !important;
+    color: var(--cnz-neon-cyan) !important;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+/* Arcade Style Interactive Buttons styling rules */
+.cnz-btn {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem !important;
+    background-color: transparent !important;
+    border: 2px solid var(--cnz-neon-pink) !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 4px var(--cnz-neon-pink);
+    padding: 10px !important;
+}
+
+/* Neon hover color snap transformation */
+.cnz-btn:hover {
+    background-color: var(--cnz-neon-cyan) !important;
+    border-color: var(--cnz-neon-cyan) !important;
+    color: var(--cnz-bg-dark) !important;
+    box-shadow: 0 0 15px var(--cnz-neon-cyan);
+    transform: scale(1.04);
+}
