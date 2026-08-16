@@ -8,7 +8,7 @@
     <title>Casino Night Arcade</title>
     
     <!-- Load the official standalone Ruffle Player emulator script -->
-    <script src="/res/js/ruffle/ruffle.js"></script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
@@ -33,17 +33,27 @@
     </div>
 
     <script>
+        // 2. Initialize the global config configuration space BEFORE the page finishes building
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            /* Force Ruffle to stream the heavy core engines from its own server */
+            publicPath: "https://unpkg.com",
+            pageVisibility: false, // Prevents tab-switch audio muting!
+            autoplay: "on",
+            unmuteOverlay: "hidden"
+        };
+
         window.addEventListener("DOMContentLoaded", () => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
             const container = document.getElementById("ruffle-player");
-            container.appendChild(player);
-
-            // CRITICAL CONFIG: This property prevents audio from pausing on tab switch!
-            player.load({
-                url: "/res/games/sonic-scene-creator-v.2.swf",
-                pageVisibility: false
-            });
+            
+            if (container) {
+                container.appendChild(player);
+                player.load({
+                    url: "/res/games/sonic-scene-creator-v.2.swf"
+                });
+            }
         });
     </script>
 
