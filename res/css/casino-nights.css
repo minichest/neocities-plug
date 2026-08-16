@@ -209,7 +209,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Force the iframe to stretch out completely and fill your pink borders */
+/* Forces the iframe to stretch out completely and fill your pink borders */
 .game-cabinet iframe {
     position: absolute;
     top: -12px;
