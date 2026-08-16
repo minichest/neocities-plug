@@ -19,7 +19,7 @@
         <div class="columns is-tablet">
           
           <div class="column is-4">
-            <div class="p-5 mb-4 custom-panel-box">
+            <div class="p-5 mb-5 custom-panel-box">
               <h2 class="title is-4 mb-3 text-pixel-heading section-titles" id="now-playing-header">now playing</h2>
               
               <div class="has-text-centered py-2">
@@ -29,7 +29,7 @@
               </div>
             </div>
 
-            <div class="p-5 mb-4 custom-panel-box">
+            <div class="p-6 mb-5 custom-panel-box">
               <h3 class="title is-5 mb-3 text-pixel-heading section-titles" id="listening-metrics-header">listening metrics</h3>
               <ul class="is-marginless" style="list-style-type: none; padding-left: 0;">
                 <li class="mb-2"><strong>Profile:</strong> <a href="https://last.fm/users/last_aezi" target="_blank">my last.fm</a></li>
@@ -37,6 +37,33 @@
                 <li class="mb-0"><strong>Rotation:</strong> neo soul, r&amp;b, grime, bedroom pop, trap, afropop, afroswing, wave, reggae</li>
               </ul>
             </div>
+
+            <div class="p-6 mb-5 custom-panel-box">
+              <!-- Bulma Title Font Classes -->
+              <h2 class="title is-4 mb-4">SOUND TEST (doesn't work)</h2>
+              
+              <div class="sound-test-container">
+                  <!-- Digital Track Selector Display (Custom) -->
+                  <div class="digital-display mb-3">
+                      <span class="track-label">TRACK:</span>
+                      <span class="track-number">01</span>
+                  </div>
+
+                  <!-- Bulma Responsive Columns Grid for Buttons -->
+                  <div class="columns is-mobile is-variable is-1">
+                      <div class="column">
+                          <button class="button is-fullwidth is-small font-pixel">◀ PREV</button>
+                      </div>
+                      <div class="column">
+                          <button class="button is-fullwidth is-small is-success font-pixel">▶ PLAY</button>
+                      </div>
+                      <div class="column">
+                          <button class="button is-fullwidth is-small is-danger font-pixel">■ STOP</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
           </div>
           
           <div class="column is-8">

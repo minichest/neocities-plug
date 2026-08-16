@@ -39,13 +39,14 @@ body.music-page {
   ), 
   url('../img/scenes/stardust-speedway.png');
   background-repeat: repeat-x;
-  background-position: bottom center;
+  background-position: center bottom;
   background-attachment: fixed;
   image-rendering: pixelated;
   background-blend-mode: overlay; 
   min-height: 100vh;
   overflow-y: auto;
   filter: brightness(1.1) saturate(1.4);
+  background-size: auto 100vh;
 }
 
 /* --- Panel Boxes --- */
