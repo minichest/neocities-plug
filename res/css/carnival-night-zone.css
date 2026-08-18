@@ -52,7 +52,7 @@ body::before {
 }
 
 /* Text shadow configurations for headers */
-.carnival-main-title {
+#carnival-header > .carnival-main-title {
     font-family: 'VT323', monospace;
     font-size: 4.5rem !important; 
     color: var(--cnz-ring-yellow) !important;
@@ -61,9 +61,10 @@ body::before {
     letter-spacing: 2px;
 }
 
-.cnz-sub {
+#carnival-header > .cnz-sub {
     font-size: 1.6rem !important;
     text-shadow: 2px 2px #000000;
+    color: #ffd7ff !important
 }
 
 /* Back button text transformation rules */
@@ -92,7 +93,7 @@ body::before {
 }
 
 /* Card titles */
-.cnz-card-title {
+.carnival-card > .cnz-card-title {
     font-family: 'VT323', monospace;
     font-size: 2.2rem !important;
     color: var(--cnz-neon-cyan) !important;
