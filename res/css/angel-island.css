@@ -22,6 +22,10 @@ body {
     background: none;
 }
 
+.box-override {
+    padding: 0.5rem !important;
+}
+
 /* FIXED GRID: Formats your cells cleanly below the title text */
 #nav-grid {
     display: grid;
